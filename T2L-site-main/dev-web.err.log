@@ -1,0 +1,1828 @@
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/templates AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+Failed to proxy http://localhost:8000/api/schema/NDA AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+AggregateError: 
+    at ignore-listed frames {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:8000
+        at <unknown> (Error: connect ECONNREFUSED ::1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 8000
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:8000
+        at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:8000) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 8000
+    }
+  ]
+}
+[browser] The result of getSnapshot should be cached to avoid an infinite loop 
+    at BrandingLibrary (app/components/DashboardDocEngine/DocEngineWorkspace.tsx:591:36)
+  589 | function BrandingLibrary() {
+  590 |   const { user } = useAuth();
+> 591 |   const profiles = useDocumentStore((state) => state.brandingProfiles.filter((profile) =>...
+      |                                    ^
+  592 |   return (
+  593 |     <div className="de-panel">
+  594 |       <h2>Branding Profiles</h2> (app/components/DashboardDocEngine/DocEngineWorkspace.tsx:591:36)
+[browser] Uncaught Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+    at DocEngineWorkspace (app/components/DashboardDocEngine/DocEngineWorkspace.tsx:448:31)
+    at BrandingPage (app\dashboard\doc-engine\branding\page.tsx:4:10)
+  446 |       {view === "history" && <VersionHistory documents={documents} />}
+  447 |       {view === "templates" && <TemplateCatalogue templates={templates} onUse={store.setD...
+> 448 |       {view === "branding" && <BrandingLibrary />}
+      |                               ^
+  449 |       {view === "signatures" && <SignatureLibrary />}
+  450 |     </section>
+  451 |   );
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+⚠ Found a change in next.config.ts. Restarting the server to apply the changes...

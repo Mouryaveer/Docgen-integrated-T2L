@@ -1,0 +1,16 @@
+import React from 'react';
+
+export default function Courses() {
+  return (
+    <>
+      <section id="courses" className="pad-s"><div className="wrap">
+  <div className="shead reveal"><div className="st"><div className="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="6" /><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5" /></svg></div><div><h2>Courses &amp; certifications</h2><div className="sdesc">Structured learning for founders, students, and professionals</div></div></div></div>
+  <div className="grid g3">
+    <article className="card reveal js-card" data-item data-title="Startup law essentials course certification" data-cat="Course" data-tags="course certification startup law founder learning"><div className="ctop"><span className="src-pill ok">COURSE</span><span className="cdate">Self-paced</span></div><h3>Startup Law Essentials</h3><p className="cbody">Six modules from incorporation to fundraising, with a certificate on completion.</p><div className="cfoot"><a className="cread" href="/#contact">Enroll<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a><button className="iconbtn bm push" data-bm="course-startup" aria-label="Bookmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></svg></button></div></article>
+    <article className="card reveal js-card" style={{ "--d": "80ms" } as React.CSSProperties} data-item data-title="Contract drafting certification course" data-cat="Course" data-tags="contract drafting course certification lawyer"><div className="ctop"><span className="src-pill ok">CERTIFICATION</span><span className="cdate">4 weeks</span></div><h3>Contract Drafting &amp; Review</h3><p className="cbody">Practical drafting skills with real clauses, redlining exercises, and feedback.</p><div className="cfoot"><a className="cread" href="/#contact">Enroll<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a><button className="iconbtn bm push" data-bm="course-contracts" aria-label="Bookmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></svg></button></div></article>
+    <article className="card reveal js-card" style={{ "--d": "160ms" } as React.CSSProperties} data-item data-title="Legal research masterclass litigators" data-cat="Course" data-tags="legal research masterclass course litigator judgment"><div className="ctop"><span className="src-pill ok">MASTERCLASS</span><span className="cdate">Live cohort</span></div><h3>Legal Research Masterclass</h3><p className="cbody">Precedent search, citation checking, and building arguments, for practising lawyers.</p><div className="cfoot"><a className="cread" href="/#contact">Enroll<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a><button className="iconbtn bm push" data-bm="course-research" aria-label="Bookmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></svg></button></div></article>
+  </div>
+</div></section>
+    </>
+  );
+}
