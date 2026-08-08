@@ -25,13 +25,41 @@ const BASE = "/api/docengine";
 
 function extractError(err: unknown): string {
   if (err instanceof AxiosError) {
-    const data = err.response?.data;
+    // Network-level failure — backend is not reachable
+    if (!err.response) {
+      const code = (err as { code?: string }).code;
+      if (
+        code === "ECONNREFUSED" ||
+        code === "ERR_NETWORK" ||
+        err.message.toLowerCase().includes("network")
+      ) {
+        return "Cannot reach the document engine. Make sure the backend server is running on port 8000 (run start-docgen.bat).";
+      }
+      return `Network error: ${err.message}`;
+    }
+    // HTTP error with a JSON body from the API
+    const data = err.response.data as Record<string, unknown> | undefined;
     if (data?.error) return String(data.error);
     if (data?.detail) return String(data.detail);
-    if (err.message) return err.message;
+    // Non-JSON response (e.g. FastAPI default 500 HTML page)
+    const raw = err.response.data as unknown;
+    if (typeof raw === "string" && raw.length < 300) return raw;
+    return `Server error ${err.response.status}: ${err.response.statusText || "unexpected response"}`;
   }
   if (err instanceof Error) return err.message;
   return "An unexpected error occurred. Please try again.";
+}
+
+// ── Backend availability check ────────────────────────────
+
+/** Returns true if the backend is reachable. Never throws. */
+export async function checkBackendHealth(): Promise<boolean> {
+  try {
+    const res = await axios.get(`${BASE}/templates`, { timeout: 3000 });
+    return res.status === 200;
+  } catch {
+    return false;
+  }
 }
 
 // ── Template catalogue ────────────────────────────────────

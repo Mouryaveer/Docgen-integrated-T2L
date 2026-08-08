@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import DocEngineWorkspace from "../../../components/DashboardDocEngine/DocEngineWorkspace";
 
 export default function BrandingPage() {
-  redirect("/docengine");
+  return <DocEngineWorkspace view="branding" />;
 }

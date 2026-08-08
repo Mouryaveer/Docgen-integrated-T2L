@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import DocEngineWorkspace from "../../../components/DashboardDocEngine/DocEngineWorkspace";
 
 export default function CreateDocumentPage() {
-  redirect("/docengine");
+  return <DocEngineWorkspace view="create" />;
 }

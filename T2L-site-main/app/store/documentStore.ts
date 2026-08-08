@@ -1,10 +1,17 @@
 // ============================================================
 // Turn2Law — Document Store (Zustand)
 // Persists document history + draft state across navigation.
+//
+// Schema version: bump STORE_VERSION whenever the shape of
+// DocumentRecord, BrandingProfileRecord, or
+// CertificateMetadataRecord changes.  The migrate() function
+// receives the old persisted object and returns a fresh one
+// that matches the current schema so stale localStorage data
+// never crashes the app.
 // ============================================================
 
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 import type {
   DocumentRecord,
   DocumentVersion,
@@ -15,6 +22,8 @@ import type {
   BrandingProfileRecord,
   CertificateMetadataRecord,
 } from "../types/docengine";
+
+const STORE_VERSION = 1;
 
 // ── Wizard / generation state ─────────────────────────────
 
@@ -152,12 +161,30 @@ export const useDocumentStore = create<DocumentStore>()(
     }),
     {
       name: "t2l-documents",
+      storage: createJSONStorage(() => localStorage),
+      version: STORE_VERSION,
       // Persist user-owned records, not transient wizard files/state.
       partialize: (state) => ({
         documents: state.documents,
         brandingProfiles: state.brandingProfiles,
         certificates: state.certificates,
       }),
+      // Called when the persisted version doesn't match STORE_VERSION.
+      // Return a safe default so a schema change never crashes the app.
+      migrate(persisted: unknown, fromVersion: number) {
+        console.warn(
+          `[t2l-store] migrating localStorage from v${fromVersion} → v${STORE_VERSION}`
+        );
+        // For any version mismatch we start fresh rather than risk
+        // corrupt data.  Add fine-grained field migrations here as the
+        // schema evolves (e.g. rename a field, add a required property).
+        void persisted; // persisted data available for selective migration
+        return {
+          documents: [],
+          brandingProfiles: [],
+          certificates: [],
+        };
+      },
     }
   )
 );

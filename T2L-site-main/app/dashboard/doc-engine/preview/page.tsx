@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import DocEngineWorkspace from "../../../components/DashboardDocEngine/DocEngineWorkspace";
 
 export default function PreviewDocumentPage() {
-  redirect("/docengine");
+  return <DocEngineWorkspace view="preview" />;
 }
