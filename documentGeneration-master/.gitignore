@@ -63,4 +63,5 @@ docgen/sample.pdf
 .pytest_cache/
 
 .kiro
+.vscode
 

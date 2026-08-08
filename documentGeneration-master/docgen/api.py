@@ -30,6 +30,10 @@ import tempfile
 import uuid
 from typing import Any, Dict, List, Optional
 
+# Load .env early so os.environ.get() calls below pick up the values
+from dotenv import load_dotenv as _load_dotenv
+_load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"), override=False)
+
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, RedirectResponse
@@ -52,15 +56,17 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS: allow_credentials must be False when allow_origins=["*"]
+# CORS: list only the specific origins that need access.
+# Do not mix "*" with explicit origins — the wildcard is redundant and can
+# cause browser rejections with certain CORS pre-flight requests.
+_CORS_ORIGINS = os.environ.get(
+    "CORS_ORIGINS",
+    "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001",
+).split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:3001",
-        "*",
-    ],
+    allow_origins=_CORS_ORIGINS,
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -134,17 +140,20 @@ def _new_doc_id() -> str:
 # ---------------------------------------------------------------------------
 # Turn2Law default company profile (injected when branding_mode='turn2law')
 # Plain text — latex_writer handles & → \& escaping for CP_* keys.
+# Sensitive values are read from environment variables; .env fallbacks are
+# used only for local development.  In production, set these via the
+# deployment environment (e.g. Docker secrets, AWS Parameter Store, etc.).
 # ---------------------------------------------------------------------------
 _T2L_DEFAULTS: Dict[str, str] = {
-    "CP_Company_Name":    "EFFIVIA TURN2LAW LEGAL PRIVATE LIMITED",
-    "CP_Signatory_Name":  "Yash Phoghat",
-    "CP_Designation":     "Founder & CEO",
-    "CP_Company_Address": "Block 5, DEI Innovation Hub, SRMIST, Kattankulathur, Chennai - 603203, Tamil Nadu, India",
-    "CP_Company_Email":   "turntwolaw@gmail.com",
-    "CP_Company_Phone":   "",
-    "CP_Company_Website": "www.turn2law.com",
-    "CP_Signature_Image": "sample_asset_1_xref_47",
-    "CP_Title_Suffix":    " - Turn2Law",
+    "CP_Company_Name":    os.environ.get("T2L_COMPANY_NAME",    "EFFIVIA TURN2LAW LEGAL PRIVATE LIMITED"),
+    "CP_Signatory_Name":  os.environ.get("T2L_SIGNATORY_NAME",  "Yash Phoghat"),
+    "CP_Designation":     os.environ.get("T2L_DESIGNATION",     "Founder & CEO"),
+    "CP_Company_Address": os.environ.get("T2L_COMPANY_ADDRESS", "Block 5, DEI Innovation Hub, SRMIST, Kattankulathur, Chennai - 603203, Tamil Nadu, India"),
+    "CP_Company_Email":   os.environ.get("T2L_COMPANY_EMAIL",   "turntwolaw@gmail.com"),
+    "CP_Company_Phone":   os.environ.get("T2L_COMPANY_PHONE",   ""),
+    "CP_Company_Website": os.environ.get("T2L_COMPANY_WEBSITE", "www.turn2law.com"),
+    "CP_Signature_Image": os.environ.get("T2L_SIGNATURE_IMAGE", "sample_asset_1_xref_47"),
+    "CP_Title_Suffix":    os.environ.get("T2L_TITLE_SUFFIX",    " - Turn2Law"),
 }
 
 # ---------------------------------------------------------------------------
@@ -238,6 +247,13 @@ async def generate_with_branding_endpoint(
         async def _save(upload: Optional[UploadFile], name: str) -> Optional[str]:
             if not upload or not upload.filename:
                 return None
+            # Guard against oversized uploads before reading into memory
+            MAX_UPLOAD_BYTES = int(os.environ.get("MAX_UPLOAD_BYTES", 20 * 1024 * 1024))  # 20 MB default
+            if upload.size is not None and upload.size > MAX_UPLOAD_BYTES:
+                raise ValueError(
+                    f"Uploaded file '{upload.filename}' is too large "
+                    f"({upload.size:,} bytes). Maximum allowed: {MAX_UPLOAD_BYTES:,} bytes."
+                )
             ext  = os.path.splitext(upload.filename)[1] or ".png"
             dest = os.path.join(tmp_dir, f"{name}{ext}")
             with open(dest, "wb") as fh:
@@ -253,14 +269,17 @@ async def generate_with_branding_endpoint(
         if not header_path:
             return JSONResponse({"success": False, "error": "header_image is required for custom branding."}, status_code=400)
 
-        # Always clear stale preamble cache — tmp uploads have different absolute paths each time
+        # Use a request-scoped copy of the profile dir so that concurrent
+        # requests with the same profile_id don't race on the preamble cache.
+        # The branding engine reads the preamble from this isolated location.
         from branding.config import CONFIG as _BC
-        _stale = os.path.join(_BC.profiles_dir, profile_id, "brand_preamble.tex")
+        request_profile_id = f"{profile_id}_{doc_id}"
+        _stale = os.path.join(_BC.profiles_dir, request_profile_id, "brand_preamble.tex")
         _silent_remove(_stale)
 
         merged = _merge_company_profile(user_inputs, company_profile_json, branding_mode="custom", sig_image_path=sig_path)
         brand  = make_custom_profile(
-            profile_id=profile_id, name=profile_name,
+            profile_id=request_profile_id, name=profile_name,
             header_image_path=header_path, footer_image_path=footer_path,
             watermark_image_path=watermark_path, logo_image_path=logo_path,
         )
@@ -405,8 +424,24 @@ async def sign(
     try:
         cert_name = cert_file.filename or "cert.pfx"
         cert_path = os.path.join(tmp_dir, cert_name)
+
+        # Validate cert file size before reading
+        MAX_CERT_BYTES = int(os.environ.get("MAX_CERT_BYTES", 5 * 1024 * 1024))  # 5 MB default
+        if cert_file.size is not None and cert_file.size > MAX_CERT_BYTES:
+            return JSONResponse(
+                {"success": False, "error": f"Certificate file too large ({cert_file.size:,} bytes). Maximum allowed: {MAX_CERT_BYTES:,} bytes."},
+                status_code=400,
+            )
+
+        cert_data = await cert_file.read()
+        if not cert_data:
+            return JSONResponse({"success": False, "error": "Certificate file is empty."}, status_code=400)
         with open(cert_path, "wb") as fh:
-            fh.write(await cert_file.read())
+            fh.write(cert_data)
+
+        # Verify the written file is accessible before handing it to the signer
+        if not os.path.isfile(cert_path) or os.path.getsize(cert_path) == 0:
+            return JSONResponse({"success": False, "error": "Certificate file could not be saved."}, status_code=500)
 
         output_signed = os.path.join(OUTPUT_DIR, f"{doc_id}_signed.pdf")
         # pyHanko calls asyncio.run() internally — must run in thread with no active loop
