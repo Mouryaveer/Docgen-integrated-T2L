@@ -4,7 +4,7 @@ const ENGINE_URL = (process.env.DOCUMENT_GENERATION_API_URL || "http://127.0.0.1
 
 async function proxy(request: NextRequest, context: { params: Promise<{ path: string[] }> }) {
   const { path } = await context.params;
-  const upstreamUrl = `${ENGINE_URL}/${path.join("/")}${request.nextUrl.search}`;
+  const upstreamUrl = `${ENGINE_URL}/api/${path.join("/")}${request.nextUrl.search}`;
   const headers = new Headers(request.headers);
   headers.delete("host");
   headers.delete("origin");
