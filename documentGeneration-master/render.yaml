@@ -2,8 +2,8 @@ services:
   - type: web
     name: turn2law-docengine
     env: docker
-    dockerfilePath: documentGeneration-master/docgen/Dockerfile
-    dockerContext: documentGeneration-master/docgen
+    dockerfilePath: ./docgen/Dockerfile
+    dockerContext: ./docgen
     plan: free
     healthCheckPath: /health
     envVars:
