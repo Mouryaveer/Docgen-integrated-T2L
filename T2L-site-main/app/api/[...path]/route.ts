@@ -27,3 +27,14 @@ export const POST = proxy;
 export const PUT = proxy;
 export const PATCH = proxy;
 export const DELETE = proxy;
+
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 204,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers": "*",
+    },
+  });
+}
