@@ -16,7 +16,9 @@ export default function DocEngineStandaloneApp() {
   useEffect(() => {
     document.title = "Doc Engine App | Turn2Law";
     (window as Window & { __T2L_DOC_ENGINE_API__?: string }).__T2L_DOC_ENGINE_API__ =
-      process.env.NEXT_PUBLIC_DOCUMENT_GENERATION_API_URL || "http://127.0.0.1:8000";
+      typeof window !== "undefined" && window.location.protocol !== "file:"
+        ? ""
+        : "http://127.0.0.1:8000";
     const links = FONT_LINKS.map((href, index) => {
       const link = document.createElement("link");
       link.href = href;
