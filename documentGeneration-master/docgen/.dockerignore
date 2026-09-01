@@ -1,0 +1,17 @@
+.venv
+__pycache__
+*.pyc
+*.pyo
+generated_docs/*
+!generated_docs/.gitkeep
+*.pdf
+*.aux
+*.log
+*.tex
+branding/profiles/
+.env
+my_cert.pfx
+output*
+sample.pdf
+test_*.pdf
+test_*.png

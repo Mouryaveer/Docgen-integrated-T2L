@@ -61,7 +61,7 @@ app = FastAPI(
 # cause browser rejections with certain CORS pre-flight requests.
 _CORS_ORIGINS = os.environ.get(
     "CORS_ORIGINS",
-    "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://localhost:9002,http://127.0.0.1:9002",
+    "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://localhost:9002,http://127.0.0.1:9002,https://turn2law-tan.vercel.app",
 ).split(",")
 
 app.add_middleware(
@@ -171,6 +171,11 @@ class GenerateRequest(BaseModel):
 # ---------------------------------------------------------------------------
 # Endpoints
 # ---------------------------------------------------------------------------
+
+@app.get("/health", include_in_schema=False)
+def health():
+    return {"status": "ok"}
+
 
 @app.get("/api/templates", summary="List all available document templates")
 def list_templates() -> List[Dict[str, Any]]:
