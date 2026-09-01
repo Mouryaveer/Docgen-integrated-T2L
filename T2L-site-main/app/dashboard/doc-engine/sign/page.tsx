@@ -1,5 +1,5 @@
 import DocEngineWorkspace from "../../../components/DashboardDocEngine/DocEngineWorkspace";
 
-export default function SignDocumentPage() {
+export default function SignPage() {
   return <DocEngineWorkspace view="sign" />;
 }

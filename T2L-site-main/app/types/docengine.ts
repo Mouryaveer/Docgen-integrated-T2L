@@ -128,7 +128,7 @@ export interface GenerationState {
   isGenerating: boolean;
   isSigningLoading: boolean;
   error: string | null;
-  editingDocumentId: string | null; // if editing existing draft
+  editingDocumentId: string | null;
 }
 
 // ── API response shapes ───────────────────────────────────

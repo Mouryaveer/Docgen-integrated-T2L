@@ -1,13 +1,6 @@
 // ============================================================
 // Turn2Law — Document Store (Zustand)
 // Persists document history + draft state across navigation.
-//
-// Schema version: bump STORE_VERSION whenever the shape of
-// DocumentRecord, BrandingProfileRecord, or
-// CertificateMetadataRecord changes.  The migrate() function
-// receives the old persisted object and returns a fresh one
-// that matches the current schema so stale localStorage data
-// never crashes the app.
 // ============================================================
 
 import { create } from "zustand";
@@ -24,8 +17,6 @@ import type {
 } from "../types/docengine";
 
 const STORE_VERSION = 1;
-
-// ── Wizard / generation state ─────────────────────────────
 
 const defaultGenState = (): GenerationState => ({
   step: 1,
@@ -49,10 +40,7 @@ const defaultGenState = (): GenerationState => ({
   editingDocumentId: null,
 });
 
-// ── Document history ──────────────────────────────────────
-
 interface DocumentStore {
-  // History
   documents: DocumentRecord[];
   brandingProfiles: BrandingProfileRecord[];
   certificates: CertificateMetadataRecord[];
@@ -64,7 +52,6 @@ interface DocumentStore {
   addBrandingProfile: (profile: BrandingProfileRecord) => void;
   addCertificateMetadata: (certificate: CertificateMetadataRecord) => void;
 
-  // Generation wizard state (not persisted — resets on page load)
   gen: GenerationState;
   setGenStep: (step: number) => void;
   setDocType: (docType: DocType) => void;
@@ -90,7 +77,6 @@ interface DocumentStore {
 export const useDocumentStore = create<DocumentStore>()(
   persist(
     (set, get) => ({
-      // ── Document history ────────────────────────────────
       documents: [],
       brandingProfiles: [],
       certificates: [],
@@ -135,7 +121,6 @@ export const useDocumentStore = create<DocumentStore>()(
           ],
         })),
 
-      // ── Generation wizard state (not persisted) ─────────
       gen: defaultGenState(),
 
       setGenStep: (step) => set((s) => ({ gen: { ...s.gen, step } })),
@@ -163,22 +148,16 @@ export const useDocumentStore = create<DocumentStore>()(
       name: "t2l-documents",
       storage: createJSONStorage(() => localStorage),
       version: STORE_VERSION,
-      // Persist user-owned records, not transient wizard files/state.
       partialize: (state) => ({
         documents: state.documents,
         brandingProfiles: state.brandingProfiles,
         certificates: state.certificates,
       }),
-      // Called when the persisted version doesn't match STORE_VERSION.
-      // Return a safe default so a schema change never crashes the app.
       migrate(persisted: unknown, fromVersion: number) {
         console.warn(
           `[t2l-store] migrating localStorage from v${fromVersion} → v${STORE_VERSION}`
         );
-        // For any version mismatch we start fresh rather than risk
-        // corrupt data.  Add fine-grained field migrations here as the
-        // schema evolves (e.g. rename a field, add a required property).
-        void persisted; // persisted data available for selective migration
+        void persisted;
         return {
           documents: [],
           brandingProfiles: [],

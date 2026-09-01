@@ -1,5 +1,5 @@
 import DocEngineWorkspace from "../../../components/DashboardDocEngine/DocEngineWorkspace";
 
-export default function CreateDocumentPage() {
+export default function CreatePage() {
   return <DocEngineWorkspace view="create" />;
 }

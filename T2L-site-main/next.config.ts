@@ -1,27 +1,17 @@
 import type { NextConfig } from "next";
-import path from "path";
 
-// Allow overriding backend URL for staging / production deployments.
-// During local development this defaults to http://localhost:8000.
-const BACKEND_URL = process.env.BACKEND_URL ?? "http://localhost:8000";
+const ENGINE_URL = (process.env.DOCUMENT_GENERATION_API_URL || "").replace(/\/$/, "");
 
 const nextConfig: NextConfig = {
   turbopack: {
-    root: path.join(__dirname),
+    root: __dirname,
   },
   async rewrites() {
+    if (!ENGINE_URL) return [];
     return [
       {
-        source: "/api/docengine/:path*",
-        destination: `${BACKEND_URL}/api/:path*`,
-      },
-      {
-        source: "/api/:path*",
-        destination: `${BACKEND_URL}/api/:path*`,
-      },
-      {
         source: "/files/:path*",
-        destination: `${BACKEND_URL}/files/:path*`,
+        destination: ENGINE_URL + "/files/:path*",
       },
     ];
   },

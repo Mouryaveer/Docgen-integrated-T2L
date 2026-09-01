@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins, DM_Mono } from "next/font/google";
-import "./globals.css";
 import { AuthProvider } from "./context/AuthContext";
+import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,8 +23,7 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   title: "Turn2Law: India's Legal Operating System",
-  description:
-    "India's Legal OS. One platform, two audiences: founders and lawyers. Legal Services, Doc Engine, and Introspector, all grounded in Indian law.",
+  description: "India's Legal OS. One platform, two audiences: founders and lawyers. Legal Services, Doc Engine, and Introspector, all grounded in Indian law.",
   icons: {
     icon: "/turn2law-logo.png",
   },
@@ -38,7 +37,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
       className={`${inter.variable} ${poppins.variable} ${dmMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
@@ -47,3 +45,4 @@ export default function RootLayout({
     </html>
   );
 }
+

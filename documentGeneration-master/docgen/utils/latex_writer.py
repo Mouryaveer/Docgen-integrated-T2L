@@ -41,7 +41,10 @@ def _run_xelatex(tex_path: str, work_dir: str, pass_num: int) -> None:
         "-interaction=nonstopmode",
         "-halt-on-error",
         f"-output-directory={work_dir}",
-        tex_path,
+        # Invoke the input by basename from work_dir. Passing the full
+        # Windows short path (for example DOCUME~1) makes MiKTeX truncate
+        # the path while parsing the command line.
+        os.path.basename(tex_path),
     ]
     result = subprocess.run(
         cmd,
@@ -98,10 +101,15 @@ def render_latex(
     output_tex    = os.path.abspath(output_tex)
     output_pdf    = os.path.abspath(output_pdf)
 
-    # Work directory = template directory so \graphicspath and \input resolve
-    work_dir = os.path.dirname(template_path)
+    # Compile in the caller-provided output directory, never in the source
+    # template/layout directories. This keeps the engine usable when the
+    # application is deployed from a read-only checkout or package image.
+    work_dir = os.path.dirname(output_pdf) or os.getcwd()
+    os.makedirs(work_dir, exist_ok=True)
 
-    # Compute absolute paths for all resource directories
+    # Compute absolute paths for all resource directories.
+    # Use forward slashes so paths work correctly in LaTeX on all platforms
+    # (os.path.normpath produces backslashes on Windows).
     _base = os.path.dirname(template_path)   # docgen/templates/
     images_dir  = os.path.normpath(os.path.join(_base, "..", "images")).replace("\\", "/") + "/"
     fonts_dir   = os.path.normpath(os.path.join(_base, "..", "fonts")).replace("\\", "/") + "/"
@@ -122,19 +130,34 @@ def render_latex(
     if os.path.exists(_t2l_preamble_src):
         with open(_t2l_preamble_src, "r", encoding="utf-8") as fh:
             _preamble_raw = fh.read()
+        # Keep font resolution local to the XeLaTeX work directory. MiKTeX can
+        # misinterpret short Windows paths (DOCUME~1) as font family names.
+        _fonts_source_dir = os.path.normpath(os.path.join(_base, "..", "fonts"))
+        for _font_name in (
+            "Montserrat-Regular-Full.ttf",
+            "Montserrat-Bold-Full.ttf",
+            "Garet-Regular.ttf",
+            "Garet-Bold.ttf",
+        ):
+            _font_source = os.path.join(_fonts_source_dir, _font_name)
+            _font_target = os.path.join(work_dir, _font_name)
+            if os.path.isfile(_font_source) and not os.path.isfile(_font_target):
+                shutil.copy2(_font_source, _font_target)
         _preamble_rendered = (
             _preamble_raw
-            .replace("FONTS_DIR_PLACEHOLDER",  fonts_dir)
+            .replace("FONTS_DIR_PLACEHOLDER",  "./")
             .replace("IMAGES_DIR_PLACEHOLDER", images_dir)
         )
-        # Write into the work directory (next to the template)
+        # Write the rendered preamble beside the generated document. The
+        # source layouts directory may be read-only in production.
         _rendered_path = os.path.join(work_dir, "brand_preamble_rendered.tex")
+        _rendered_path_latex = _rendered_path.replace("\\", "/")
         with open(_rendered_path, "w", encoding="utf-8") as fh:
             fh.write(_preamble_rendered)
         # Redirect the template's \input to the rendered copy
         tex = tex.replace(
             r"\input{" + layouts_dir + r"brand_preamble}",
-            r"\input{" + layouts_dir + r"brand_preamble_rendered}",
+            r"\input{" + _rendered_path_latex + r"}",
         )
 
     # ── 4. Custom preamble swap (Branding Engine) ─────────────────────────────

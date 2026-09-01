@@ -61,12 +61,13 @@ app = FastAPI(
 # cause browser rejections with certain CORS pre-flight requests.
 _CORS_ORIGINS = os.environ.get(
     "CORS_ORIGINS",
-    "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001",
+    "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://localhost:9002,http://127.0.0.1:9002",
 ).split(",")
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_CORS_ORIGINS,
+    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1)(:\\d+)?$",
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],

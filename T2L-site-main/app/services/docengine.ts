@@ -25,7 +25,6 @@ const BASE = "/api/docengine";
 
 function extractError(err: unknown): string {
   if (err instanceof AxiosError) {
-    // Network-level failure — backend is not reachable
     if (!err.response) {
       const code = (err as { code?: string }).code;
       if (
@@ -37,11 +36,9 @@ function extractError(err: unknown): string {
       }
       return `Network error: ${err.message}`;
     }
-    // HTTP error with a JSON body from the API
     const data = err.response.data as Record<string, unknown> | undefined;
     if (data?.error) return String(data.error);
     if (data?.detail) return String(data.detail);
-    // Non-JSON response (e.g. FastAPI default 500 HTML page)
     const raw = err.response.data as unknown;
     if (typeof raw === "string" && raw.length < 300) return raw;
     return `Server error ${err.response.status}: ${err.response.statusText || "unexpected response"}`;
@@ -52,7 +49,6 @@ function extractError(err: unknown): string {
 
 // ── Backend availability check ────────────────────────────
 
-/** Returns true if the backend is reachable. Never throws. */
 export async function checkBackendHealth(): Promise<boolean> {
   try {
     const res = await axios.get(`${BASE}/templates`, { timeout: 3000 });
@@ -151,16 +147,13 @@ export async function generateWithBranding(
     form.append("fields_json", JSON.stringify(payload.fields));
     form.append("profile_id", `web-${Date.now().toString(36)}`);
     form.append("profile_name", `${payload.companyProfile.CP_Company_Name ?? "Workspace"} branding`);
-    form.append(
-      "company_profile_json",
-      JSON.stringify(payload.companyProfile)
-    );
+    form.append("company_profile_json", JSON.stringify(payload.companyProfile));
 
-    if (payload.signatureFile) form.append("signature_image", payload.signatureFile);
-    if (payload.headerImage)   form.append("header_image",    payload.headerImage);
-    if (payload.footerImage)   form.append("footer_image",    payload.footerImage);
-    if (payload.watermarkImage) form.append("watermark_image", payload.watermarkImage);
-    if (payload.logoImage)     form.append("logo_image",      payload.logoImage);
+    if (payload.signatureFile)  form.append("signature_image",  payload.signatureFile);
+    if (payload.headerImage)    form.append("header_image",     payload.headerImage);
+    if (payload.footerImage)    form.append("footer_image",     payload.footerImage);
+    if (payload.watermarkImage) form.append("watermark_image",  payload.watermarkImage);
+    if (payload.logoImage)      form.append("logo_image",       payload.logoImage);
 
     const { data } = await axios.post<GenerateResponse>(
       `${BASE}/generate-with-branding`,
@@ -189,10 +182,7 @@ export async function generateWithLetterhead(
     form.append("fields_json", JSON.stringify(payload.fields));
     form.append("profile_id", `letterhead-${Date.now().toString(36)}`);
     form.append("profile_name", `${payload.companyProfile.CP_Company_Name ?? "Workspace"} letterhead`);
-    form.append(
-      "company_profile_json",
-      JSON.stringify(payload.companyProfile)
-    );
+    form.append("company_profile_json", JSON.stringify(payload.companyProfile));
     form.append("letterhead_image", payload.letterheadFile);
     if (payload.signatureFile) form.append("signature_image", payload.signatureFile);
 
@@ -255,12 +245,12 @@ export async function signDocument(
 ): Promise<SignResponse> {
   try {
     const form = new FormData();
-    form.append("doc_id",         payload.docId);
-    form.append("cert_file",      payload.certFile);
-    form.append("cert_password",  payload.password);
-    form.append("signer_name",    payload.signerName);
-    form.append("reason",         payload.signerReason ?? "Approved");
-    form.append("location",       payload.signerLocation ?? "India");
+    form.append("doc_id",        payload.docId);
+    form.append("cert_file",     payload.certFile);
+    form.append("cert_password", payload.password);
+    form.append("signer_name",   payload.signerName);
+    form.append("reason",        payload.signerReason ?? "Approved");
+    form.append("location",      payload.signerLocation ?? "India");
     const { data } = await axios.post<SignResponse>(`${BASE}/sign`, form);
     return data;
   } catch (err) {

@@ -41,7 +41,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     isLoading: true,
   });
 
-  // Restore session from localStorage on mount
   useEffect(() => {
     try {
       const raw = localStorage.getItem(SESSION_KEY);
@@ -57,9 +56,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = useCallback(async (email: string, _password: string) => {
-    // TODO: replace with real API call
     setState((s) => ({ ...s, isLoading: true }));
-    await new Promise((r) => setTimeout(r, 600)); // simulate network
+    await new Promise((r) => setTimeout(r, 600));
     const user: User = {
       ...DEMO_USER,
       email,

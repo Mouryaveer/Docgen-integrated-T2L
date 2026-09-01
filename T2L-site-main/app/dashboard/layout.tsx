@@ -114,7 +114,6 @@ export default function DashboardLayout({
   const { user, isAuthenticated, isLoading, logout, loginDemo } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Auto-login demo user if not authenticated
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
       loginDemo();
@@ -138,7 +137,6 @@ export default function DashboardLayout({
     <div className={`dash-shell ${sidebarOpen ? "sidebar-open" : ""}`}>
       {/* ── Sidebar ─────────────────────────────────── */}
       <aside className="dash-sidebar" aria-label="Dashboard navigation">
-        {/* Logo */}
         <div className="dash-sidebar-logo">
           <Link href="/" aria-label="Turn2Law home">
             <Image
@@ -160,10 +158,8 @@ export default function DashboardLayout({
           </button>
         </div>
 
-        {/* Section label */}
         <div className="dash-nav-label">Doc Engine</div>
 
-        {/* Primary nav */}
         <nav className="dash-nav" aria-label="Primary dashboard">
           {NAV_ITEMS.map((item) => {
             const isActive =
@@ -187,11 +183,9 @@ export default function DashboardLayout({
           })}
         </nav>
 
-        {/* Divider */}
         <div className="dash-nav-divider" />
         <div className="dash-nav-label">Platform</div>
 
-        {/* Bottom nav — other site sections */}
         <nav className="dash-nav" aria-label="Other sections">
           {BOTTOM_ITEMS.map((item) => (
             <Link
@@ -206,7 +200,6 @@ export default function DashboardLayout({
           ))}
         </nav>
 
-        {/* User card at bottom */}
         {user && (
           <div className="dash-user-card">
             <div className="dash-user-av">{user.avatar}</div>
@@ -228,7 +221,6 @@ export default function DashboardLayout({
         )}
       </aside>
 
-      {/* ── Mobile overlay ───────────────────────────── */}
       {sidebarOpen && (
         <div
           className="dash-overlay"
@@ -237,9 +229,7 @@ export default function DashboardLayout({
         />
       )}
 
-      {/* ── Main content area ────────────────────────── */}
       <div className="dash-main">
-        {/* Top bar */}
         <header className="dash-topbar">
           <button
             className="dash-burger"
@@ -252,7 +242,6 @@ export default function DashboardLayout({
           </button>
 
           <div className="dash-topbar-title">
-            {/* Breadcrumb derived from pathname */}
             <BreadCrumb pathname={pathname} />
           </div>
 
@@ -275,7 +264,6 @@ export default function DashboardLayout({
           </div>
         </header>
 
-        {/* Page content */}
         <main className="dash-content">{children}</main>
       </div>
     </div>
