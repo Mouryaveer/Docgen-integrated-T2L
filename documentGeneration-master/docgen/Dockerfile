@@ -5,7 +5,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-latex-recommended \
     texlive-latex-extra \
     texlive-fonts-recommended \
-    texlive-fonts-extra \
     tesseract-ocr \
     tesseract-ocr-eng \
     libgl1 \
