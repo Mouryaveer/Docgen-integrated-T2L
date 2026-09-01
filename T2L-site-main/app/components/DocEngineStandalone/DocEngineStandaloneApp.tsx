@@ -37,7 +37,7 @@ export default function DocEngineStandaloneApp() {
       script.dataset.docengineStandalone = String(index);
       const runtimeSource = source.replace(
         /const API = \(\(\) => \{[\s\S]*?\}\)\(\);/,
-        "const API = window.__T2L_DOC_ENGINE_API__ || 'http://127.0.0.1:8000';",
+        "const API = (window.location.protocol === 'file:') ? 'http://127.0.0.1:8000' : '';",
       );
       script.text = runtimeSource
         .replace(/^\s*'use strict';\s*/m, "")
