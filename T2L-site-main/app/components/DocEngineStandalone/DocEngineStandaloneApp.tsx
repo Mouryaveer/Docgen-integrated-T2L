@@ -53,9 +53,13 @@ export default function DocEngineStandaloneApp() {
       updateSidebar?: (step: number) => void;
     };
 
-    legacyWindow.loadTemplates?.();
-    legacyWindow.updateMobileProgress?.(1);
-    legacyWindow.updateSidebar?.(1);
+    // Scripts are injected synchronously and execute immediately.
+    // DOMContentLoaded has already fired in React, so call init manually.
+    setTimeout(() => {
+      legacyWindow.loadTemplates?.();
+      legacyWindow.updateMobileProgress?.(1);
+      legacyWindow.updateSidebar?.(1);
+    }, 0);
 
     return () => {
       mountedScripts.forEach((script) => script.remove());
