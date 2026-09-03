@@ -32,7 +32,7 @@ function extractError(err: unknown): string {
         code === "ERR_NETWORK" ||
         err.message.toLowerCase().includes("network")
       ) {
-        return "Cannot reach the document engine. Make sure the backend server is running on port 8000 (run start-docgen.bat).";
+        return "Cannot reach the document engine. The backend server may be unavailable.";
       }
       return `Network error: ${err.message}`;
     }
