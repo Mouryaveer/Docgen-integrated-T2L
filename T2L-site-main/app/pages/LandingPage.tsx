@@ -656,7 +656,7 @@ export default function LandingPage() {
 
               <InteractiveCard
                 className="fork ink reveal in"
-                style={{ "--d": "120ms" } as React.CSSProperties}
+                style={{ "--d": "60ms" } as React.CSSProperties}
               >
                 <div className="orb"></div>
                 <div className="fork-badge">
@@ -733,53 +733,43 @@ export default function LandingPage() {
                 <div className="qmark">“</div>
                 <p className="q">Turn2Law incorporated us in eleven days flat, every stage visible, no chasing anyone on email. It felt like software, not a law firm.</p>
                 <div className="who">
-                  <div className="av">AR</div>
+                  <div className="av">PB</div>
                   <div>
                     <div className="nm">
-                      Ananya Rao
+                      PK Bennet
                       <span className="tverify" aria-label="Verified">
                         <svg viewBox="0 0 24 24" fill="none" strokeWidth="3" stroke="currentColor">
                           <path d="M20 6 9 17l-5-5"></path>
                         </svg>
                       </span>
                     </div>
-                    <div className="rl">Founder · ICEBRKR</div>
+                    <div className="rl">Icebrkr</div>
                   </div>
                 </div>
               </InteractiveCard>
 
+              
+
               <InteractiveCard className="ttile reveal" style={{ "--d": "60ms" } as React.CSSProperties}>
                 <div className="qmark">“</div>
-                <p className="q">Introspector does the research my juniors used to spend nights on, with a citation on every claim.</p>
+                <p className="q">Doc Engine drafts our NDAs in under a minute and flags anything one-sided.</p>
                 <div className="who">
-                  <div className="av">PV</div>
+                  <div className="av">AD</div>
                   <div>
-                    <div className="nm">Adv. Pranav Verma</div>
-                    <div className="rl">Advocate · High Court</div>
+                    <div className="nm">Abhiraj Deshmukh</div>
+                    <div className="rl">Sentinellayer</div>
                   </div>
                 </div>
               </InteractiveCard>
 
               <InteractiveCard className="ttile reveal" style={{ "--d": "120ms" } as React.CSSProperties}>
                 <div className="qmark">“</div>
-                <p className="q">Doc Engine drafts our NDAs in under a minute and flags anything one-sided.</p>
-                <div className="who">
-                  <div className="av">KM</div>
-                  <div>
-                    <div className="nm">Kabir Menon</div>
-                    <div className="rl">COO · Sentinel Layer</div>
-                  </div>
-                </div>
-              </InteractiveCard>
-
-              <InteractiveCard className="ttile reveal" style={{ "--d": "180ms" } as React.CSSProperties}>
-                <div className="qmark">“</div>
                 <p className="q">Transparent pricing, right on the page. That kind of honesty is refreshing.</p>
                 <div className="who">
-                  <div className="av">TW</div>
+                  <div className="av">SV</div>
                   <div>
-                    <div className="nm">Tara Wadhwa</div>
-                    <div className="rl">Founder · Withera Labs</div>
+                    <div className="nm">Sarthak Verma</div>
+                    <div className="rl">Withera Labs</div>
                   </div>
                 </div>
               </InteractiveCard>
@@ -831,7 +821,7 @@ export default function LandingPage() {
                 <p className="reveal in" style={{ "--d": "140ms" } as React.CSSProperties}>
                   Everything you need to know about Turn2Law and how our AI-powered products simplify legal work for individuals and businesses.
                 </p>
-                <hr className="faq-rule reveal in" style={{ "--d": "180ms" } as React.CSSProperties} />
+                <hr className="faq-rule reveal in" style={{ "--d": "120ms" } as React.CSSProperties} />
               </div>
 
               <div className="faq-list">
@@ -863,7 +853,7 @@ export default function LandingPage() {
                 <FAQCard
                   question="What legal services does Turn2Law offer?"
                   answer="Company incorporation and registrations, trademark and IP protection, GST and MSME registration, ROC and annual compliance, fundraising and ESOP advisory, employment and HR legal, disputes and recovery, plus AI document drafting through Doc Engine and AI legal research through Introspector."
-                  delayStyle={{ "--d": "120ms" } as React.CSSProperties}
+                  delayStyle={{ "--d": "60ms" } as React.CSSProperties}
                   icon={
                     <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="7" width="20" height="14" rx="2"></rect>
@@ -875,7 +865,7 @@ export default function LandingPage() {
                 <FAQCard
                   question="How is my data kept private and secure?"
                   answer="Confidentiality is a design requirement, not a policy footnote. Sensitive and privileged material lives in isolated, encrypted storage in India, with per-matter access controls and a full access log visible to you. Your documents are never used to train models."
-                  delayStyle={{ "--d": "180ms" } as React.CSSProperties}
+                  delayStyle={{ "--d": "120ms" } as React.CSSProperties}
                   icon={
                     <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>

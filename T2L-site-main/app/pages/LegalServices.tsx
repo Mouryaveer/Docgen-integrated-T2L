@@ -893,36 +893,42 @@ export default function LegalServices() {
                 <div className="qm">&ldquo;</div>
                 <p className="q">Turn2Law incorporated us in eleven days flat, every stage visible, no chasing anyone on email. It felt like software, not a law firm.</p>
                 <div className="who">
-                  <div className="av">AR</div>
+                  <div className="av">PB</div>
                   <div>
-                    <div className="nm">Ananya Rao</div>
-                    <div className="rl">Founder · ICEBRKR</div>
+                    <div className="nm">PK Bennet</div>
+                    <div className="rl">Icebrkr</div>
                   </div>
                 </div>
               </div>
 
               <div className="tcell reveal">
                 <div className="qm">&ldquo;</div>
-                <p className="q">The compliance calendar caught an MGT-7 deadline we would have missed. That single reminder more than paid for the platform.</p>
+                <p className="q">Doc Engine drafts our NDAs in under a minute and flags anything one-sided.</p>
                 <div className="who">
-                  <div className="av">SN</div>
+                  <div className="av">AD</div>
                   <div>
-                    <div className="nm">Sara Nair</div>
-                    <div className="rl">Founder · Serene Neurotech</div>
+                    <div className="nm">Abhiraj Deshmukh</div>
+                    <div className="rl">Sentinellayer</div>
                   </div>
                 </div>
               </div>
 
               <div className="tcell reveal">
                 <div className="qm">&ldquo;</div>
-                <p className="q">One platform for incorporation, contracts, and compliance. Genuinely the legal ops layer for our whole company.</p>
+                <p className="q">Transparent pricing, right on the page. That kind of honesty is refreshing.</p>
                 <div className="who">
-                  <div className="av">IS</div>
+                  <div className="av">SV</div>
                   <div>
-                    <div className="nm">Ishaan Sharma</div>
-                    <div className="rl">Founder · Motioncomm</div>
+                    <div className="nm">Sarthak Verma</div>
+                    <div className="rl">Withera Labs</div>
                   </div>
                 </div>
+              </div>
+
+              
+              </div>
+
+              
               </div>
             </div>
           </div>
