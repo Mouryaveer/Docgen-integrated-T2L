@@ -773,6 +773,18 @@ export default function LandingPage() {
                   </div>
                 </div>
               </InteractiveCard>
+
+              <InteractiveCard className="ttile reveal" style={{ "--d": "180ms" } as React.CSSProperties}>
+                <div className="qmark">“</div>
+                <p className="q">Turn2Law’s Introspector gave us complete visibility into every legal step. For a company like ours, that clarity is everything.</p>
+                <div className="who">
+                  <div className="av">PO</div>
+                  <div>
+                    <div className="nm">Pranit Odil</div>
+                    <div className="rl">IREC Markets Pvt Ltd</div>
+                  </div>
+                </div>
+              </InteractiveCard>
             </div>
 
             <div className="tst-metrics reveal" style={{ "--d": "240ms" } as React.CSSProperties}>
