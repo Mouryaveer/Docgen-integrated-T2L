@@ -925,11 +925,6 @@ export default function LegalServices() {
                 </div>
               </div>
 
-              
-              </div>
-
-              
-              </div>
             </div>
           </div>
         </section>
