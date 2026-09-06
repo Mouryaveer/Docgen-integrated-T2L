@@ -24,9 +24,8 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   title: "Turn2Law: India's Legal Operating System",
   description: "India's Legal OS. One platform, two audiences: founders and lawyers. Legal Services, Doc Engine, and Introspector, all grounded in Indian law.",
-  icons: {
-    icon: "/turn2law-logo.png",
-  },
+  // Icons are resolved from the app/ file conventions:
+  // app/favicon.ico, app/icon.png, app/apple-icon.png
 };
 
 export default function RootLayout({
