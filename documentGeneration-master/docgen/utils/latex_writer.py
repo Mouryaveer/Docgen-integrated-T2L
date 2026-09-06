@@ -107,6 +107,10 @@ def render_latex(
     work_dir = os.path.dirname(output_pdf) or os.getcwd()
     os.makedirs(work_dir, exist_ok=True)
 
+    # Every intermediate file this function writes into the shared work_dir is
+    # namespaced with this stem so concurrent generations cannot collide.
+    _doc_stem = os.path.splitext(os.path.basename(output_tex))[0]
+
     # Compute absolute paths for all resource directories.
     # Use forward slashes so paths work correctly in LaTeX on all platforms
     # (os.path.normpath produces backslashes on Windows).
@@ -150,7 +154,12 @@ def render_latex(
         )
         # Write the rendered preamble beside the generated document. The
         # source layouts directory may be read-only in production.
-        _rendered_path = os.path.join(work_dir, "brand_preamble_rendered.tex")
+        # The filename is document-scoped: work_dir is shared by every
+        # concurrent request, so a fixed name would let two simultaneous
+        # generations overwrite each other's preamble mid-compile.
+        _rendered_path = os.path.join(
+            work_dir, f"brand_preamble_rendered_{_doc_stem}.tex"
+        )
         _rendered_path_latex = _rendered_path.replace("\\", "/")
         with open(_rendered_path, "w", encoding="utf-8") as fh:
             fh.write(_preamble_rendered)
@@ -231,12 +240,14 @@ def render_latex(
             # known local asset, never arbitrary user-supplied LaTeX/path text.
             tex = tex.replace(placeholder, _safe_signature_image_stem(raw_value, images_dir))
         elif key in _AMP_ONLY:
-            tex = tex.replace(placeholder, str(raw_value).replace("&", r"\&"))
+            tex = tex.replace(placeholder, _escape_latex_light(str(raw_value)))
         else:
             tex = tex.replace(placeholder, _escape_latex(str(raw_value)))
 
     # ── 6. Clear residual unfilled optional tokens ───────────────────────────
-    tex = re.sub(r"\{\{[A-Za-z_]+\}\}", "", tex)
+    # Include digits: field keys such as {{PartyA_Name}} or {{Party2}} must
+    # also be cleared, otherwise the raw token is typeset into the PDF.
+    tex = re.sub(r"\{\{[A-Za-z0-9_]+\}\}", "", tex)
 
     # ── 7. Write rendered .tex into work directory ───────────────────────────
     rendered_tex = os.path.join(work_dir, os.path.basename(output_tex))
@@ -265,7 +276,28 @@ def render_latex(
     if os.path.abspath(compiled_pdf) != os.path.abspath(output_pdf):
         shutil.copy2(compiled_pdf, output_pdf)
 
+    # ── 10. Remove LaTeX intermediates ───────────────────────────────────────
+    # work_dir is the same directory that is published over HTTP at /files.
+    # Leaving .tex/.aux/.log behind both exposes the rendered document source
+    # (including every field value) and grows the disk without bound.
+    _cleanup_latex_intermediates(work_dir, _doc_stem)
+
     logger.info("PDF written to: %s", output_pdf)
+
+
+def _cleanup_latex_intermediates(work_dir: str, doc_stem: str) -> None:
+    """Delete the throw-away files produced by a successful XeLaTeX run."""
+    for name in (
+        f"{doc_stem}.aux",
+        f"{doc_stem}.log",
+        f"{doc_stem}.out",
+        f"{doc_stem}.toc",
+        f"brand_preamble_rendered_{doc_stem}.tex",
+    ):
+        try:
+            os.remove(os.path.join(work_dir, name))
+        except OSError:
+            pass
 
 
 # ---------------------------------------------------------------------------
@@ -291,6 +323,30 @@ def _escape_latex(value: str) -> str:
         elif ch == '~':  result.append(r'\textasciitilde{}')
         elif ch == '^':  result.append(r'\textasciicircum{}')
         else:            result.append(ch)
+    return ''.join(result)
+
+
+def _escape_latex_light(value: str) -> str:
+    """
+    Escape a company-profile (``CP_*``) value.
+
+    These fields are typeset inside the letterhead/signature blocks where an
+    author may legitimately use ``\\\\`` for a manual line break, so the
+    backslash and braces are deliberately left untouched.  Every *other*
+    character that LaTeX treats as special is escaped — without this, a
+    company name or address containing ``&``, ``%``, ``$``, ``#``, ``_``,
+    ``^`` or ``~`` aborts the XeLaTeX run and the whole generation fails.
+    """
+    result: list[str] = []
+    for ch in value:
+        if   ch == '&': result.append(r'\&')
+        elif ch == '%': result.append(r'\%')
+        elif ch == '$': result.append(r'\$')
+        elif ch == '#': result.append(r'\#')
+        elif ch == '_': result.append(r'\_')
+        elif ch == '~': result.append(r'\textasciitilde{}')
+        elif ch == '^': result.append(r'\textasciicircum{}')
+        else:           result.append(ch)
     return ''.join(result)
 
 

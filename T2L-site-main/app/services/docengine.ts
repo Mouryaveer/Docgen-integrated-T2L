@@ -51,7 +51,10 @@ function extractError(err: unknown): string {
 
 export async function checkBackendHealth(): Promise<boolean> {
   try {
-    const res = await axios.get(`${BASE}/templates`, { timeout: 3000 });
+    // Previously fetched the full template catalogue just to test reachability.
+    // The engine now exposes a dedicated probe under /api so it is reachable
+    // through the same proxy.
+    const res = await axios.get(`${BASE}/health`, { timeout: 3000 });
     return res.status === 200;
   } catch {
     return false;

@@ -1,45 +1,25 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import { engineCorsPreflight, proxyToEngine } from "@/lib/engine-proxy";
 
-const ENGINE_URL = (
-  process.env.DOCUMENT_GENERATION_API_URL ||
-  (process.env.NODE_ENV === "production"
-    ? "https://turn2law-webiste-1.onrender.com"
-    : "http://127.0.0.1:8000")
-).replace(/\/$/, "");
+// Kept in step with app/api/[...path]/route.ts — both delegate to the same
+// shared proxy so the two entry points cannot drift apart.
+export const maxDuration = 120;
+export const dynamic = "force-dynamic";
 
-async function proxy(request: NextRequest, context: { params: Promise<{ path: string[] }> }) {
+async function handler(
+  request: NextRequest,
+  context: { params: Promise<{ path: string[] }> },
+) {
   const { path } = await context.params;
-  const upstreamUrl = `${ENGINE_URL}/api/${path.join("/")}${request.nextUrl.search}`;
-  const headers = new Headers(request.headers);
-  headers.delete("host");
-  headers.delete("origin");
-
-  const upstream = await fetch(upstreamUrl, {
-    method: request.method,
-    headers,
-    body: request.method === "GET" || request.method === "HEAD" ? undefined : await request.arrayBuffer(),
-    cache: "no-store",
-  });
-
-  const responseHeaders = new Headers(upstream.headers);
-  responseHeaders.delete("content-encoding");
-  responseHeaders.delete("content-length");
-  return new NextResponse(upstream.body, { status: upstream.status, headers: responseHeaders });
+  return proxyToEngine(request, path);
 }
 
-export const GET = proxy;
-export const POST = proxy;
-export const PUT = proxy;
-export const PATCH = proxy;
-export const DELETE = proxy;
+export const GET = handler;
+export const POST = handler;
+export const PUT = handler;
+export const PATCH = handler;
+export const DELETE = handler;
 
-export async function OPTIONS() {
-  return new NextResponse(null, {
-    status: 204,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
-      "Access-Control-Allow-Headers": "*",
-    },
-  });
+export function OPTIONS() {
+  return engineCorsPreflight();
 }

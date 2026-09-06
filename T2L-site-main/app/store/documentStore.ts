@@ -154,14 +154,25 @@ export const useDocumentStore = create<DocumentStore>()(
         certificates: state.certificates,
       }),
       migrate(persisted: unknown, fromVersion: number) {
-        console.warn(
-          `[t2l-store] migrating localStorage from v${fromVersion} → v${STORE_VERSION}`
-        );
-        void persisted;
+        // Never discard user data on a version bump. The previous
+        // implementation returned empty arrays, so shipping any store change
+        // silently wiped every saved document, branding profile and
+        // certificate from the user's browser. Carry the known-shaped slices
+        // forward and let unknown ones fall back to empty.
+        const state = (persisted ?? {}) as Partial<
+          Pick<DocumentStore, "documents" | "brandingProfiles" | "certificates">
+        >;
+        if (fromVersion !== STORE_VERSION) {
+          console.info(
+            `[t2l-store] migrating localStorage v${fromVersion} → v${STORE_VERSION}`
+          );
+        }
         return {
-          documents: [],
-          brandingProfiles: [],
-          certificates: [],
+          documents: Array.isArray(state.documents) ? state.documents : [],
+          brandingProfiles: Array.isArray(state.brandingProfiles)
+            ? state.brandingProfiles
+            : [],
+          certificates: Array.isArray(state.certificates) ? state.certificates : [],
         };
       },
     }

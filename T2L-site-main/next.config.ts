@@ -1,32 +1,19 @@
 import type { NextConfig } from "next";
 
-const ENGINE_URL = (
-  process.env.DOCUMENT_GENERATION_API_URL ||
-  (process.env.NODE_ENV === "production"
-    ? "https://turn2law-webiste-1.onrender.com"
-    : "http://127.0.0.1:8000")
-).replace(/\/$/, "");
-
+/**
+ * The Document Engine origin is resolved at REQUEST time by the route handlers
+ * in app/api/ and app/files/ (see lib/docengine-origin.ts).
+ *
+ * It is deliberately not referenced here: `rewrites()` destinations are baked
+ * into the build output, so configuring the engine in this file meant the PDF
+ * path (/files/*) and the API path (/api/*) could resolve to different
+ * backends, and changing the engine URL required a rebuild rather than a
+ * restart.
+ */
 const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR || ".next",
   turbopack: {
     root: __dirname,
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/api/docengine/:path*",
-        destination: ENGINE_URL + "/api/:path*",
-      },
-      {
-        source: "/api/:path*",
-        destination: ENGINE_URL + "/api/:path*",
-      },
-      {
-        source: "/files/:path*",
-        destination: ENGINE_URL + "/files/:path*",
-      },
-    ];
   },
 };
 

@@ -29,6 +29,7 @@ import re
 import shutil
 import tempfile
 import uuid
+from contextlib import asynccontextmanager
 from typing import Any, Dict, List, Optional
 
 # Load .env early so os.environ.get() calls below pick up the values
@@ -37,8 +38,7 @@ _load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"), o
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, RedirectResponse
-from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from pydantic import BaseModel
 
 logging.basicConfig(
@@ -51,30 +51,111 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(_HERE, "generated_docs")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
+@asynccontextmanager
+async def _lifespan(_app: FastAPI):
+    """Import the rendering stack once at boot.
+
+    Every endpoint imports app/schema/latex_writer (and transitively
+    google-genai) lazily inside the handler. That made the *first* document
+    request pay ~2.7s of module-import cost on top of the LaTeX compile.
+    """
+    try:
+        import schema  # noqa: F401
+        import app as _core  # noqa: F401
+        from utils.latex_writer import render_latex  # noqa: F401
+        logger.info("Rendering stack pre-loaded.")
+    except Exception:  # pragma: no cover - warming must never block boot
+        logger.exception("Could not pre-load rendering stack; will import lazily")
+    yield
+
+
 app = FastAPI(
     title="Turn2Law Document Generation API",
     description="Production API for generating, signing, and classifying legal documents.",
     version="1.0.0",
+    lifespan=_lifespan,
 )
 
 # CORS: list only the specific origins that need access.
 # Do not mix "*" with explicit origins — the wildcard is redundant and can
 # cause browser rejections with certain CORS pre-flight requests.
-_CORS_ORIGINS = os.environ.get(
-    "CORS_ORIGINS",
-    "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://localhost:9002,http://127.0.0.1:9002,https://turn2law-tan.vercel.app",
-).split(",")
+_CORS_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get(
+        "CORS_ORIGINS",
+        "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://localhost:9002,http://127.0.0.1:9002,https://turn2law-tan.vercel.app",
+    ).split(",")
+    if origin.strip()
+]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_CORS_ORIGINS,
-    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1)(:\\d+)?$",
+    # NOTE: this is a regular string, not a raw string — inside r"..." the
+    # sequence \\d is a literal backslash followed by 'd', which meant no
+    # localhost origin carrying a port ever matched.
+    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1)(:\d+)?$",
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.mount("/files", StaticFiles(directory=OUTPUT_DIR), name="files")
+# Only completed PDFs are published. Mounting OUTPUT_DIR directly with
+# StaticFiles also exposed the rendered .tex source (every field value the
+# user typed), the XeLaTeX .log/.aux files and the bundled .ttf fonts.
+_DOC_ID_RE = re.compile(r"^[a-f0-9]{12}(_signed)?$")
+
+
+def _safe_doc_id(doc_id: str) -> str:
+    """Return *doc_id* if it is a generated id, else raise ValueError.
+
+    Document ids are interpolated into filesystem paths, so anything other
+    than the 12-char hex form produced by ``_new_doc_id`` is rejected — this
+    is what stops ``../..`` traversal through /api/sign and /api/preview.
+    """
+    candidate = (doc_id or "").strip()
+    if not _DOC_ID_RE.match(candidate):
+        raise ValueError(f"Malformed document id: {doc_id!r}")
+    return candidate
+
+
+@app.get("/files/{filename}", include_in_schema=False)
+def serve_generated_pdf(filename: str):
+    """Serve a generated PDF by name, rejecting anything else."""
+    if not filename.lower().endswith(".pdf"):
+        raise HTTPException(status_code=404, detail="Not found")
+    try:
+        doc_id = _safe_doc_id(filename[: -len(".pdf")])
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Not found")
+
+    path = os.path.join(OUTPUT_DIR, f"{doc_id}.pdf")
+    if not os.path.isfile(path):
+        raise HTTPException(status_code=404, detail="Not found")
+    return FileResponse(
+        path,
+        media_type="application/pdf",
+        # Generated documents are immutable: the id is content-scoped, so the
+        # browser (and the Next.js proxy) can keep the preview cached instead
+        # of re-downloading it for every iframe/download/print action.
+        headers={
+            "Cache-Control": "private, max-age=3600, immutable",
+            "Content-Disposition": f'inline; filename="{doc_id}.pdf"',
+        },
+    )
+
+
+@app.get("/health", include_in_schema=False)
+@app.get("/api/health", include_in_schema=False)
+def health():
+    """Liveness probe.
+
+    Exposed under /api as well: the Next.js frontend only proxies /api/*, so
+    without this the browser had to fetch the whole template catalogue just to
+    find out whether the engine was reachable.
+    """
+    return {"status": "ok"}
+
 
 # The production frontend is the Next.js app in ../../T2L-site-main.
 # This API no longer serves the old static HTML docgen frontend.
@@ -139,6 +220,39 @@ def _new_doc_id() -> str:
     return uuid.uuid4().hex[:12]
 
 
+# The template catalogue and field schemas are build-time constants, so they
+# are safe to cache in the browser for the lifetime of a session.
+_CATALOGUE_CACHE_HEADERS = {"Cache-Control": "public, max-age=300, stale-while-revalidate=3600"}
+
+
+async def _offload(func, *args, **kwargs):
+    """Run a blocking callable in the default executor.
+
+    XeLaTeX compilation (~5s), Tesseract OCR and the Gemini call are all
+    synchronous. Calling them directly from an ``async def`` handler blocks
+    the single event-loop thread, so one document generation froze *every*
+    other in-flight request — including health checks.
+    """
+    import asyncio
+    import functools
+
+    loop = asyncio.get_running_loop()
+    return await loop.run_in_executor(None, functools.partial(func, *args, **kwargs))
+
+
+def _sanitize_upload_name(filename: str | None, fallback: str) -> str:
+    """Reduce a client-supplied filename to a safe basename.
+
+    ``UploadFile.filename`` is attacker-controlled; joining it onto a temp
+    directory unchanged allowed ``../`` traversal out of that directory.
+    """
+    candidate = os.path.basename((filename or "").replace("\\", "/")).strip()
+    if not candidate or candidate in {".", ".."}:
+        return fallback
+    candidate = re.sub(r"[^A-Za-z0-9._-]", "_", candidate)
+    return candidate[:120] or fallback
+
+
 # ---------------------------------------------------------------------------
 # Turn2Law default company profile (injected when branding_mode='turn2law')
 # Plain text — latex_writer handles & → \& escaping for CP_* keys.
@@ -173,13 +287,8 @@ class GenerateRequest(BaseModel):
 # Endpoints
 # ---------------------------------------------------------------------------
 
-@app.get("/health", include_in_schema=False)
-def health():
-    return {"status": "ok"}
-
-
 @app.get("/api/templates", summary="List all available document templates")
-def list_templates() -> List[Dict[str, Any]]:
+def list_templates() -> JSONResponse:
     from schema import DOCUMENT_SCHEMAS
     result: List[Dict[str, Any]] = []
     for doc_type, schema in DOCUMENT_SCHEMAS.items():
@@ -194,20 +303,26 @@ def list_templates() -> List[Dict[str, Any]]:
             # not user-editable document fields.
             "optional_fields": [key for key in schema["optional"] if not key.startswith("CP_")],
         })
-    return result
+    # The catalogue is compiled into the image and only changes on deploy. The
+    # wizard requested it on every mount; letting the browser cache it removes
+    # a blocking round-trip from step 1.
+    return JSONResponse(result, headers=_CATALOGUE_CACHE_HEADERS)
 
 
 @app.get("/api/schema/{doc_type}", summary="Get field schema for a document type")
-def get_schema(doc_type: str) -> Dict[str, Any]:
+def get_schema(doc_type: str) -> JSONResponse:
     from schema import DOCUMENT_SCHEMAS
     schema = DOCUMENT_SCHEMAS.get(doc_type)
     if not schema:
         raise HTTPException(status_code=404, detail=f"Unknown document type: {doc_type!r}")
-    return {
-        "doc_type": doc_type,
-        "required": [_field_meta(k) for k in schema["required"]],
-        "optional": [_field_meta(k) for k in schema["optional"] if not k.startswith("CP_")],
-    }
+    return JSONResponse(
+        {
+            "doc_type": doc_type,
+            "required": [_field_meta(k) for k in schema["required"]],
+            "optional": [_field_meta(k) for k in schema["optional"] if not k.startswith("CP_")],
+        },
+        headers=_CATALOGUE_CACHE_HEADERS,
+    )
 
 
 @app.post("/api/generate", summary="Generate a PDF document")
@@ -295,7 +410,11 @@ async def generate_with_branding_endpoint(
 
         output_pdf_path = os.path.join(OUTPUT_DIR, f"{doc_id}.pdf")
         output_tex_path = os.path.join(OUTPUT_DIR, f"{doc_id}.tex")
-        _generate_with_branding_to(doc_type=doc_type, user_inputs=merged, brand_profile=brand, output_tex=output_tex_path, output_pdf=output_pdf_path)
+        await _offload(
+            _generate_with_branding_to,
+            doc_type=doc_type, user_inputs=merged, brand_profile=brand,
+            output_tex=output_tex_path, output_pdf=output_pdf_path,
+        )
         _silent_remove(output_tex_path)
         return JSONResponse({"success": True, "doc_id": doc_id, "pdf_url": f"/files/{doc_id}.pdf", "doc_type": doc_type})
     except ValueError as exc:
@@ -340,7 +459,7 @@ async def generate_with_letterhead_endpoint(
                 fh.write(await signature_image.read())
 
         merged   = _merge_company_profile(user_inputs, company_profile_json, branding_mode="letterhead", sig_image_path=sig_path)
-        info     = validate_letterhead(lh_path)
+        info     = await _offload(validate_letterhead, lh_path)
 
         profile_dir = os.path.join(_BC.profiles_dir, profile_id)
         os.makedirs(profile_dir, exist_ok=True)
@@ -363,7 +482,11 @@ async def generate_with_letterhead_endpoint(
 
         output_pdf_path = os.path.join(OUTPUT_DIR, f"{doc_id}.pdf")
         output_tex_path = os.path.join(OUTPUT_DIR, f"{doc_id}.tex")
-        _generate_with_branding_to(doc_type=doc_type, user_inputs=merged, brand_profile=profile, output_tex=output_tex_path, output_pdf=output_pdf_path)
+        await _offload(
+            _generate_with_branding_to,
+            doc_type=doc_type, user_inputs=merged, brand_profile=profile,
+            output_tex=output_tex_path, output_pdf=output_pdf_path,
+        )
         _silent_remove(output_tex_path)
 
         return JSONResponse({
@@ -392,14 +515,15 @@ async def classify(
     from utils.file_utils import extract_text
     tmp_dir = tempfile.mkdtemp(prefix="t2l_classify_")
     try:
-        original_name = file.filename or "upload"
-        tmp_path = os.path.join(tmp_dir, original_name)
+        tmp_path = os.path.join(tmp_dir, _sanitize_upload_name(file.filename, "upload"))
         with open(tmp_path, "wb") as fh:
             fh.write(await file.read())
-        text     = extract_text(tmp_path)
-        doc_type = classify_document(text)
+        # extract_text runs Tesseract/PyMuPDF and classify_document calls
+        # Gemini over the network — both block, so keep them off the loop.
+        text     = await _offload(extract_text, tmp_path)
+        doc_type = await _offload(classify_document, text)
         confidence = "high" if len(text) > 200 else "low"
-        return JSONResponse({"doc_type": doc_type, "confidence": confidence})
+        return JSONResponse({"success": True, "doc_type": doc_type, "confidence": confidence})
     except ValueError as exc:
         logger.warning("Classification error: %s", exc)
         return JSONResponse({"success": False, "error": str(exc)}, status_code=400)
@@ -425,13 +549,18 @@ async def sign(
     import functools
     from app import sign_generated_pdf
 
+    try:
+        doc_id = _safe_doc_id(doc_id)
+    except ValueError as exc:
+        return JSONResponse({"success": False, "error": str(exc)}, status_code=400)
+
     source_pdf = os.path.join(OUTPUT_DIR, f"{doc_id}.pdf")
     if not os.path.isfile(source_pdf):
         return JSONResponse({"success": False, "error": f"Document {doc_id!r} not found."}, status_code=404)
 
     tmp_dir = tempfile.mkdtemp(prefix="t2l_sign_")
     try:
-        cert_name = cert_file.filename or "cert.pfx"
+        cert_name = _sanitize_upload_name(cert_file.filename, "cert.pfx")
         cert_path = os.path.join(tmp_dir, cert_name)
 
         # Validate cert file size before reading
@@ -475,11 +604,20 @@ async def sign(
 
 @app.get("/api/preview/{doc_id}", summary="Check existence of a generated PDF")
 def preview(doc_id: str) -> JSONResponse:
+    # "does this document exist?" is a successful question with a negative
+    # answer — returning 404 made the frontend's axios call throw instead of
+    # reporting exists=false, so a missing preview surfaced as a hard error.
+    try:
+        doc_id = _safe_doc_id(doc_id)
+    except ValueError as exc:
+        return JSONResponse({"success": False, "error": str(exc)}, status_code=400)
+
     pdf_path    = os.path.join(OUTPUT_DIR, f"{doc_id}.pdf")
     signed_path = os.path.join(OUTPUT_DIR, f"{doc_id}_signed.pdf")
     if not os.path.isfile(pdf_path):
-        return JSONResponse({"exists": False, "pdf_url": None, "signed_url": None}, status_code=404)
+        return JSONResponse({"success": True, "exists": False, "pdf_url": None, "signed_url": None})
     return JSONResponse({
+        "success":    True,
         "exists":     True,
         "pdf_url":    f"/files/{doc_id}.pdf",
         "signed_url": f"/files/{doc_id}_signed.pdf" if os.path.isfile(signed_path) else None,
@@ -498,7 +636,7 @@ async def validate_cert(
 
     tmp_dir = tempfile.mkdtemp(prefix="t2l_cert_")
     try:
-        cert_name = cert_file.filename or "cert.pfx"
+        cert_name = _sanitize_upload_name(cert_file.filename, "cert.pfx")
         cert_path = os.path.join(tmp_dir, cert_name)
         with open(cert_path, "wb") as fh:
             fh.write(await cert_file.read())
@@ -522,10 +660,10 @@ async def validate_cert(
         issuer  = bundle.issuer_cn
         bundle.dispose()
 
-        return JSONResponse({"valid": True, "subject": subject, "issuer": issuer, "expires": expires_str})
+        return JSONResponse({"success": True, "valid": True, "subject": subject, "issuer": issuer, "expires": expires_str})
     except Exception as exc:
         logger.warning("Certificate validation failed: %s", exc)
-        return JSONResponse({"valid": False, "error": str(exc)}, status_code=400)
+        return JSONResponse({"success": False, "valid": False, "error": str(exc)}, status_code=400)
     finally:
         shutil.rmtree(tmp_dir, ignore_errors=True)
 
