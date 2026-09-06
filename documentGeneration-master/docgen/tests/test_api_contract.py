@@ -191,3 +191,50 @@ def test_unfilled_optional_tokens_with_digits_are_cleared():
     # {{PartyA_Name}} / {{Party2}}, or the raw token is typeset into the PDF.
     cleaned = _re.sub(r"\{\{[A-Za-z0-9_]+\}\}", "", "x {{Party2}} y {{PartyA_Name}} z")
     assert "{{" not in cleaned
+
+
+# ---------------------------------------------------------------------------
+# Deployment packaging — the engine is useless without its templates
+# ---------------------------------------------------------------------------
+
+def test_every_document_type_has_a_template_file_on_disk():
+    """A .gitignore rule for build artifacts once excluded all six source
+    templates from the repo, so the Docker image shipped without them and
+    every generation failed with "No such file or directory"."""
+    from app import TEMPLATE_MAP
+
+    missing = {
+        doc_type: path
+        for doc_type, path in TEMPLATE_MAP.items()
+        if not Path(path).is_file()
+    }
+    assert not missing, f"template files missing from the deployment: {missing}"
+
+
+def test_templates_are_not_excluded_from_git():
+    """Guard the .gitignore negation. If these files stop being tracked the
+    next Docker build silently ships without them again."""
+    import subprocess
+
+    repo_templates = DOCGEN_DIR / "templates"
+    result = subprocess.run(
+        ["git", "check-ignore", "--no-index"]
+        + [str(p) for p in sorted(repo_templates.glob("*_template.tex"))],
+        capture_output=True,
+        text=True,
+        cwd=str(DOCGEN_DIR),
+    )
+    # check-ignore exits 1 when NOTHING matched, which is what we want.
+    assert result.returncode == 1, (
+        "these source templates are gitignored and will not reach the image:\n"
+        + result.stdout
+    )
+
+
+def test_missing_template_produces_an_actionable_error(monkeypatch: pytest.MonkeyPatch):
+    """A packaging fault must not leak the container path to the user."""
+    import app as core
+
+    monkeypatch.setitem(core.TEMPLATE_MAP, "NDA", "/app/templates/does_not_exist.tex")
+    with pytest.raises(RuntimeError, match="not available on the server"):
+        api._require_template("NDA")

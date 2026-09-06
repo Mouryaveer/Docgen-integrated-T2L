@@ -66,6 +66,31 @@ async def _lifespan(_app: FastAPI):
         logger.info("Rendering stack pre-loaded.")
     except Exception:  # pragma: no cover - warming must never block boot
         logger.exception("Could not pre-load rendering stack; will import lazily")
+
+    # Verify the templates actually shipped. They were once excluded by a
+    # .gitignore rule meant for build artifacts, so the image was built without
+    # them and every single generation failed at request time with a bare
+    # "No such file or directory". Surfacing it at boot makes that obvious in
+    # the deploy logs instead of in users' faces.
+    try:
+        from app import TEMPLATE_MAP
+
+        missing = sorted(
+            doc_type for doc_type, path in TEMPLATE_MAP.items()
+            if not os.path.isfile(path)
+        )
+        if missing:
+            logger.error(
+                "STARTUP CHECK FAILED — %d/%d templates missing from this "
+                "deployment: %s. Generation will fail for these document "
+                "types. Expected them under %s",
+                len(missing), len(TEMPLATE_MAP), ", ".join(missing),
+                os.path.join(_HERE, "templates"),
+            )
+        else:
+            logger.info("Startup check: all %d templates present.", len(TEMPLATE_MAP))
+    except Exception:  # pragma: no cover
+        logger.exception("Could not run the template startup check")
     yield
 
 
@@ -764,6 +789,32 @@ def _safe_signature_image_stem(value: Any, images_dir: str) -> str:
     return ""
 
 
+def _require_template(doc_type: str) -> str:
+    """Resolve a template path, failing with an actionable message.
+
+    A missing template is a packaging fault, not user error. Left unchecked it
+    surfaced as ``[Errno 2] No such file or directory:
+    '/app/templates/<x>_template.tex'`` — which leaks the container layout and
+    tells the user nothing.
+    """
+    from app import TEMPLATE_MAP
+
+    template_path = TEMPLATE_MAP.get(doc_type)
+    if not template_path:
+        raise ValueError(f"No template found for document type: {doc_type!r}")
+    if not os.path.isfile(template_path):
+        logger.error(
+            "Template file missing from deployment: %s (doc_type=%s)",
+            template_path, doc_type,
+        )
+        raise RuntimeError(
+            f"The {doc_type.replace('_', ' ')} template is not available on the "
+            f"server. This is a deployment problem, not a problem with your "
+            f"input — please report it."
+        )
+    return template_path
+
+
 def _generate_direct_to(
     doc_type: str,
     user_inputs: Dict[str, Any],
@@ -771,12 +822,10 @@ def _generate_direct_to(
     output_pdf: str,
 ) -> str:
     """generate_direct variant that writes to caller-specified paths."""
-    from app import validate_inputs, TEMPLATE_MAP
+    from app import validate_inputs
     from utils.latex_writer import render_latex
     validate_inputs(doc_type, user_inputs)
-    template_path = TEMPLATE_MAP.get(doc_type)
-    if not template_path:
-        raise ValueError(f"No template found for document type: {doc_type!r}")
+    template_path = _require_template(doc_type)
     render_latex(template_path, output_tex, output_pdf, user_inputs)
     return output_pdf
 
@@ -789,13 +838,11 @@ def _generate_with_branding_to(
     output_pdf: str,
 ) -> str:
     """generate_with_branding variant that writes to caller-specified paths."""
-    from app import validate_inputs, TEMPLATE_MAP
+    from app import validate_inputs
     from branding import resolve_preamble
     from utils.latex_writer import render_latex
     validate_inputs(doc_type, user_inputs)
-    template_path = TEMPLATE_MAP.get(doc_type)
-    if not template_path:
-        raise ValueError(f"No template found for document type: {doc_type!r}")
+    template_path = _require_template(doc_type)
     preamble_path = resolve_preamble(brand_profile)
     render_latex(template_path, output_tex, output_pdf, user_inputs, preamble_path=preamble_path)
     return output_pdf

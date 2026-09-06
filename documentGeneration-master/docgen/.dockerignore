@@ -15,3 +15,9 @@ output*
 sample.pdf
 test_*.pdf
 test_*.png
+
+# Runtime assets the engine cannot start without. The broad *.tex rule above
+# is intended for build artifacts; these negations make it explicit that the
+# source templates and layout preambles must always ship in the image.
+!templates/*_template.tex
+!layouts/*.tex

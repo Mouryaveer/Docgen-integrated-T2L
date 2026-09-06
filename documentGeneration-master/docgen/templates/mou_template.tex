@@ -1,0 +1,129 @@
+% =============================================================================
+%  Turn2Law — Memorandum of Understanding
+%  Compiler : XeLaTeX  |  Multi-page, brand-consistent
+%  Governed by the Indian Contract Act, 1872
+% =============================================================================
+\documentclass[10pt]{article}
+\input{LAYOUTS_DIR_PLACEHOLDERbrand_preamble}
+
+\usepackage{titlesec}
+\titleformat{\section}{\fontsize{11pt}{14pt}\selectfont\bfseries}{}{0pt}{}[\vspace{-4pt}\rule{\linewidth}{0.4pt}]
+\titlespacing{\section}{0pt}{14pt}{6pt}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+  {\fontsize{15pt}{19pt}\selectfont\textbf{MEMORANDUM OF UNDERSTANDING}}\\[4pt]
+  {\fontsize{9pt}{12pt}\selectfont\textit{Governed by the Indian Contract Act, 1872}}
+\end{center}
+
+\vspace{10pt}
+\noindent This Memorandum of Understanding (\textbf{"MOU"}) is entered into as of \textbf{{{Date}}} (\textbf{"Effective Date"}) by and between:
+
+\vspace{8pt}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\textbf{Party A:} &
+\textbf{{{PartyA_Name}}} (\textbf{"Party A"});\\[6pt]
+\textbf{Party B:} &
+\textbf{{{PartyB_Name}}} (\textbf{"Party B"}).\\
+\end{tabularx}
+
+\vspace{6pt}
+\noindent Party~A and Party~B are hereinafter collectively referred to as the \textbf{"Parties"}.
+
+\section{BACKGROUND AND PURPOSE}
+
+\textbf{1.1} The Parties have expressed a mutual interest in collaborating on the following purpose (\textbf{"Purpose"}):
+
+\vspace{4pt}
+\noindent\textit{{{Purpose}}}
+
+\vspace{6pt}
+\textbf{1.2} This MOU sets out the understanding between the Parties regarding the terms of their collaboration. This MOU is intended to be a statement of intent and, unless expressly stated otherwise, does not create binding legal obligations enforceable as a contract.
+
+\section{SCOPE OF COLLABORATION}
+
+\textbf{2.1} The Parties agree to collaborate in good faith towards achieving the Purpose. The specific activities, deliverables, and responsibilities shall be mutually agreed in writing and appended to this MOU as Annexures from time to time.
+
+\textbf{2.2} Each Party shall designate a primary point of contact for the collaboration and shall promptly communicate any changes to such designation.
+
+\section{RESPONSIBILITIES}
+
+\textbf{3.1 Party A} shall be responsible for: providing relevant resources, information, and support within its domain; timely review and approval of joint deliverables; and maintaining open communication with Party~B.
+
+\textbf{3.2 Party B} shall be responsible for: contributing expertise, infrastructure, or resources within its domain; timely execution of agreed activities; and adherence to mutually agreed timelines.
+
+\textbf{3.3} Neither Party shall make any commitment or incur any expenditure on behalf of the other without prior written authorisation.
+
+\ifthenelse{\equal{{{Confidentiality}}}{}}{}{%
+\section{CONFIDENTIALITY}
+
+{{Confidentiality}} Each Party agrees to keep confidential all non-public information shared by the other Party in connection with this MOU and to use such information solely for the Purpose. This obligation shall survive the expiry or termination of this MOU for a period of three (3) years.
+}
+
+\section{INTELLECTUAL PROPERTY}
+
+\textbf{5.1} Each Party retains ownership of its pre-existing intellectual property, including any IP developed independently before or during the term of this MOU.
+
+\textbf{5.2} Any intellectual property jointly developed by the Parties under this MOU shall be jointly owned in equal shares unless otherwise agreed in writing. The Parties shall negotiate in good faith the terms of commercialisation of jointly owned IP.
+
+\textbf{5.3} Neither Party shall use the name, logo, or branding of the other without prior written consent.
+
+\section{DURATION}
+
+\textbf{6.1} This MOU shall be effective from the Effective Date and shall remain in force for a period of \textbf{{{Term}}}, unless renewed by mutual written agreement or earlier terminated pursuant to Clause~7.
+
+\ifthenelse{\equal{{{Governing_Law}}}{}}{}{%
+\textbf{6.2 Applicable Law Note:} {{Governing_Law}}
+}
+
+\section{TERMINATION}
+
+\textbf{7.1} Either Party may terminate this MOU by giving \textbf{thirty (30) days'} prior written notice to the other Party.
+
+\ifthenelse{\equal{{{Termination_Clause}}}{}}{}{%
+\textbf{7.2} {{Termination_Clause}}
+}
+
+\textbf{7.3} Termination of this MOU shall not affect any rights or obligations that accrued prior to termination.
+
+\section{NO BINDING FINANCIAL COMMITMENTS}
+
+Unless separately agreed in a binding contract executed by both Parties, nothing in this MOU shall constitute a binding financial commitment by either Party. Any financial contributions or cost-sharing arrangements shall be separately documented and executed.
+
+\section{DISPUTE RESOLUTION AND GOVERNING LAW}
+
+\textbf{9.1} This MOU shall be governed by and construed in accordance with the laws of \textbf{{{Jurisdiction}}}, including the Indian Contract Act, 1872.
+
+\textbf{9.2} Any dispute arising out of or in connection with this MOU shall first be resolved through good-faith discussions between the Parties. If unresolved within thirty (30) days, the dispute shall be referred to arbitration under the Arbitration and Conciliation Act, 1996. The seat of arbitration shall be {{Jurisdiction}}.
+
+\section{MISCELLANEOUS}
+
+\textbf{10.1 Entire Understanding.} This MOU represents the entire understanding between the Parties regarding the Purpose and supersedes all prior discussions and understandings.
+
+\textbf{10.2 Amendment.} This MOU may be amended only by a written instrument signed by authorised representatives of both Parties.
+
+\textbf{10.3 Severability.} If any provision of this MOU is found to be invalid, the remaining provisions shall continue in full force.
+
+\textbf{10.4 No Partnership.} This MOU does not create a partnership, joint venture, agency, or employment relationship between the Parties.
+
+\textbf{10.5 Counterparts.} This MOU may be executed in counterparts, each of which shall be deemed an original.
+
+\section*{EXECUTION}
+
+\noindent IN WITNESS WHEREOF, the authorised representatives of the Parties have signed this MOU as of the Effective Date.
+
+\vspace{16pt}
+\noindent\begin{tabularx}{\textwidth}{@{}X@{\hspace{20pt}}X@{}}
+\textbf{PARTY A} &
+\textbf{PARTY B} \\[24pt]
+\rule{200pt}{0.5pt} & \rule{200pt}{0.5pt} \\[3pt]
+{{PartyA_Name}} & {{PartyB_Name}} \\[3pt]
+Date: \underline{\hspace{70pt}} & Date: \underline{\hspace{70pt}} \\[20pt]
+\textbf{Witness (Party A):} & \textbf{Witness (Party B):} \\[24pt]
+\rule{200pt}{0.5pt} & \rule{200pt}{0.5pt} \\[3pt]
+Name: \underline{\hspace{70pt}} & Name: \underline{\hspace{70pt}} \\
+\end{tabularx}
+
+\end{document}

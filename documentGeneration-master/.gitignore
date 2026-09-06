@@ -41,6 +41,13 @@ docgen/templates/*.pdf
 docgen/templates/*.tex
 docgen/templates/*.aux
 docgen/templates/*.log
+# ...but the six SOURCE templates live in that directory and are the core
+# assets of the engine. The rule above excluded them from the repo entirely,
+# so the Docker image shipped without them and every generation failed with
+# "No such file or directory: /app/templates/<type>_template.tex".
+# Compiled output is named <12-hex-doc-id>.tex, which never matches this.
+!docgen/templates/*_template.tex
+!docgen/templates/brand_preamble.tex
 
 # Generated documents directory (runtime output)
 docgen/generated_docs/
