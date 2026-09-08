@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FAQCard from "../components/FAQCard";
 import InteractiveCard from "../components/InteractiveCard";
+import IntrospectorChat from "../components/Introspector/IntrospectorChat";
 
 // Helper hook for animating numbers
 function useCountUp(target: number, duration: number = 1400, trigger: boolean = false) {
@@ -243,6 +244,9 @@ export default function Introspector() {
                   </svg>
                 </a>
                 <a href="#contact" className="btn btn-ghost">Book a demo</a>
+                <a href="#introspector-live" className="btn btn-ghost" style={{ borderColor: "#c9a227", color: "#c9a227" }}>
+                  Try it live ↓
+                </a>
               </div>
               
               <div className="hero-note reveal" style={{ "--d": "280ms" } as React.CSSProperties}>
@@ -1488,6 +1492,38 @@ export default function Introspector() {
           </div>
         </section>
       </main>
+
+      {/* Live Introspector — connects to the RAG backend via /api/introspector */}
+      <section
+        id="introspector-live"
+        style={{
+          padding: "72px 20px 96px",
+          background: "#0b0b0d",
+          borderTop: "1px solid #2a2a30",
+        }}
+      >
+        <div style={{ maxWidth: 860, margin: "0 auto 28px", textAlign: "center" }}>
+          <div
+            style={{
+              fontFamily: "var(--font-dm-mono, monospace)",
+              fontSize: 12,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "#c9a227",
+              marginBottom: 12,
+            }}
+          >
+            Try it live
+          </div>
+          <h2 style={{ color: "#ece9e2", fontSize: 30, fontWeight: 700, margin: "0 0 10px" }}>
+            Ask Introspector
+          </h2>
+          <p style={{ color: "#a8a49b", fontSize: 15, margin: 0 }}>
+            A live legal query, answered from Indian legal sources in real time.
+          </p>
+        </div>
+        <IntrospectorChat />
+      </section>
 
       <Footer mode="introspector" />
 

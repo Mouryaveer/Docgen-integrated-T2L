@@ -130,6 +130,9 @@ export default function Navbar({
             <Link href="/introspector" className={pathname === "/introspector" ? "active" : ""}>
               Introspector
             </Link>
+            <Link href="/introspector#introspector-live" className="">
+              Try it Live
+            </Link>
             <Link href="/resources" className={pathname === "/resources" ? "active" : ""}>
               Resources
             </Link>
@@ -175,6 +178,9 @@ export default function Navbar({
         </Link>
         <Link href="/introspector" className={pathname === "/introspector" ? "active" : ""} onClick={() => setMenuOpen(false)}>
           Introspector
+        </Link>
+        <Link href="/introspector#introspector-live" className="" onClick={() => setMenuOpen(false)}>
+          Try it Live
         </Link>
         <Link href="/resources" className={pathname === "/resources" ? "active" : ""} onClick={() => setMenuOpen(false)}>
           Resources

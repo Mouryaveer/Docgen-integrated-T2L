@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins, DM_Mono } from "next/font/google";
 import { AuthProvider } from "./context/AuthContext";
+import LegalChatbot from "./components/LegalChatbot";
 import "./globals.css";
 
 const inter = Inter({
@@ -40,6 +41,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <AuthProvider>{children}</AuthProvider>
+        <div className="fixed bottom-6 right-6 z-50">
+          <LegalChatbot />
+        </div>
       </body>
     </html>
   );
