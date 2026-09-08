@@ -8,7 +8,7 @@ export async function GET(): Promise<NextResponse> {
     const upstream = await fetch(`${INTROSPECTOR_URL}/api/health`, {
       method: "GET",
       cache: "no-store",
-      signal: AbortSignal.timeout(10_000),
+      signal: AbortSignal.timeout(30_000),
     });
     const text = await upstream.text();
     let payload: unknown;

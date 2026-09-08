@@ -45,7 +45,7 @@ export async function sendLegalQuery(
       Accept: "application/json",
     },
     body: JSON.stringify({ query: query.trim(), model: model || undefined }),
-    signal: AbortSignal.timeout(130_000),
+    signal: AbortSignal.timeout(65_000),
   });
 
   if (!response.ok) {
@@ -77,7 +77,7 @@ export async function checkBackendHealth(): Promise<HealthResponse> {
   const response = await fetch("/api/introspector/health", {
     method: "GET",
     headers: { Accept: "application/json" },
-    signal: AbortSignal.timeout(10_000),
+    signal: AbortSignal.timeout(35_000),
   });
 
   if (!response.ok) {

@@ -15,10 +15,10 @@ import { INTROSPECTOR_URL } from "@/lib/introspector-origin";
 // A cold Render free-tier instance can take 30–60s to wake, and the RAG chain
 // itself (retrieval + generation, with retries) is not instant. Give the
 // upstream a generous budget so the request isn't aborted mid-generation.
-export const maxDuration = 120;
+export const maxDuration = 60;
 export const dynamic = "force-dynamic";
 
-const UPSTREAM_TIMEOUT_MS = 120_000;
+const UPSTREAM_TIMEOUT_MS = 55_000;
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   let query: unknown;
