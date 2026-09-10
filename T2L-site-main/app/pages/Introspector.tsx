@@ -201,7 +201,7 @@ export default function Introspector() {
         ctaText="Request access" 
         ctaLink="#contact" 
         loginText="Sign in" 
-        loginLink="#" 
+        loginLink="/login"
       />
 
       <main id="top">

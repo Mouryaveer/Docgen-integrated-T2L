@@ -509,7 +509,7 @@ export const resourcesData = [
     "cat": "Template",
     "tags": "nda confidentiality template download founder",
     "tag": "article",
-    "innerHtml": "<div class=\"ctop\"><span class=\"src-pill ok\">TEMPLATE</span><span class=\"cdate\">DOCX · PDF</span></div><h3>Mutual Non-Disclosure Agreement</h3><p class=\"cbody\">A balanced two-way NDA for early conversations with vendors, hires, and partners.</p><div class=\"cfoot\"><a class=\"cread\" href=\"/docengine.html\">Get template<svg viewBox=\"0 0 24 24\"><path d=\"M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2\"></path></svg></a><button class=\"iconbtn bm push\" data-bm=\"doc-nda\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"></path></svg></button></div>",
+    "innerHtml": "<div class=\"ctop\"><span class=\"src-pill ok\">TEMPLATE</span><span class=\"cdate\">DOCX · PDF</span></div><h3>Mutual Non-Disclosure Agreement</h3><p class=\"cbody\">A balanced two-way NDA for early conversations with vendors, hires, and partners.</p><div class=\"cfoot\"><a class=\"cread\" href=\"/docengine\">Get template<svg viewBox=\"0 0 24 24\"><path d=\"M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2\"></path></svg></a><button class=\"iconbtn bm push\" data-bm=\"doc-nda\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"></path></svg></button></div>",
     "attrs": {
       "className": "card reveal in js-card",
       "data-title": "Mutual Non-Disclosure Agreement NDA template",
@@ -522,7 +522,7 @@ export const resourcesData = [
     "cat": "Template",
     "tags": "founders agreement equity vesting template cofounder",
     "tag": "article",
-    "innerHtml": "<div class=\"ctop\"><span class=\"src-pill ok\">TEMPLATE</span><span class=\"cdate\">DOCX · PDF</span></div><h3>Founders' Agreement</h3><p class=\"cbody\">Roles, equity split, vesting, and exit terms between co-founders, in plain language.</p><div class=\"cfoot\"><a class=\"cread\" href=\"/docengine.html\">Get template<svg viewBox=\"0 0 24 24\"><path d=\"M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2\"></path></svg></a><button class=\"iconbtn bm push\" data-bm=\"doc-founders\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"></path></svg></button></div>",
+    "innerHtml": "<div class=\"ctop\"><span class=\"src-pill ok\">TEMPLATE</span><span class=\"cdate\">DOCX · PDF</span></div><h3>Founders' Agreement</h3><p class=\"cbody\">Roles, equity split, vesting, and exit terms between co-founders, in plain language.</p><div class=\"cfoot\"><a class=\"cread\" href=\"/docengine\">Get template<svg viewBox=\"0 0 24 24\"><path d=\"M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2\"></path></svg></a><button class=\"iconbtn bm push\" data-bm=\"doc-founders\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"></path></svg></button></div>",
     "attrs": {
       "className": "card reveal in js-card",
       "style": {
@@ -538,7 +538,7 @@ export const resourcesData = [
     "cat": "Template",
     "tags": "employment agreement offer letter hr template",
     "tag": "article",
-    "innerHtml": "<div class=\"ctop\"><span class=\"src-pill ok\">TEMPLATE</span><span class=\"cdate\">DOCX · PDF</span></div><h3>Employment Agreement</h3><p class=\"cbody\">A compliant employment contract with IP assignment, confidentiality, and notice clauses.</p><div class=\"cfoot\"><a class=\"cread\" href=\"/docengine.html\">Get template<svg viewBox=\"0 0 24 24\"><path d=\"M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2\"></path></svg></a><button class=\"iconbtn bm push\" data-bm=\"doc-emp\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"></path></svg></button></div>",
+    "innerHtml": "<div class=\"ctop\"><span class=\"src-pill ok\">TEMPLATE</span><span class=\"cdate\">DOCX · PDF</span></div><h3>Employment Agreement</h3><p class=\"cbody\">A compliant employment contract with IP assignment, confidentiality, and notice clauses.</p><div class=\"cfoot\"><a class=\"cread\" href=\"/docengine\">Get template<svg viewBox=\"0 0 24 24\"><path d=\"M12 15V3m0 12l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2\"></path></svg></a><button class=\"iconbtn bm push\" data-bm=\"doc-emp\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"></path></svg></button></div>",
     "attrs": {
       "className": "card reveal in js-card",
       "style": {

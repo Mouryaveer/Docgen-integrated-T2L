@@ -31,9 +31,10 @@ export default function Footer({ mode = "default" }: FooterProps) {
           
           <div className="foot-col">
             <h4>Products</h4>
-            <Link href="/">Legal Services</Link>
+            <Link href="/legal-services">Legal Services</Link>
             <Link href="/docengine">Doc Engine</Link>
             <Link href="/introspector">Introspector</Link>
+            <Link href="/resources">Resources</Link>
           </div>
 
           {mode === "introspector" ? (
@@ -47,9 +48,9 @@ export default function Footer({ mode = "default" }: FooterProps) {
           ) : (
             <div className="foot-col">
               <h4>Company</h4>
-              <a href="#products">Platform</a>
+              <Link href="/#products">Platform</Link>
               <Link href="/resources">Resources</Link>
-              <a href="#contact">Contact</a>
+              <Link href="/#contact">Contact</Link>
               <a href="https://www.linkedin.com/company/turn2law" target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </a>
@@ -67,9 +68,10 @@ export default function Footer({ mode = "default" }: FooterProps) {
           ) : (
             <div className="foot-col">
               <h4>Get started</h4>
-              <a href="#contact">Talk to us</a>
-              <a href="#">For founders</a>
-              <a href="#">For lawyers</a>
+              <Link href="/#contact">Talk to us</Link>
+              <Link href="/legal-services#services">For founders</Link>
+              <Link href="/introspector">For lawyers</Link>
+              <Link href="/privacy">Privacy Policy</Link>
               <a href="mailto:hello@turn2law.in">hello@turn2law.in</a>
             </div>
           )}

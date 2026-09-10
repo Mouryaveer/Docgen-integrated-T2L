@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Poppins, DM_Mono } from "next/font/google";
 import { AuthProvider } from "./context/AuthContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import LegalChatbot from "./components/LegalChatbot";
 import "./globals.css";
+import "./theme.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -40,7 +42,9 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} ${dmMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <AuthProvider>{children}</AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </ThemeProvider>
         <div className="fixed bottom-6 right-6 z-50">
           <LegalChatbot />
         </div>
@@ -48,4 +52,3 @@ export default function RootLayout({
     </html>
   );
 }
-

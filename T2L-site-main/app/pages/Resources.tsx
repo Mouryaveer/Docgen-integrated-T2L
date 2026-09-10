@@ -7,6 +7,7 @@ import ResourcesHero from "../components/Resources/ResourcesHero";
 import Subnav from "../components/Resources/Subnav";
 import SearchResults from "../components/Resources/SearchResults";
 import FeaturedCollections from "../components/Resources/FeaturedCollections";
+import Turn2LawTools from "../components/Resources/Turn2LawTools";
 import LatestNews from "../components/Resources/LatestNews";
 import ComplianceUpdates from "../components/Resources/ComplianceUpdates";
 import Events from "../components/Resources/Events";
@@ -129,6 +130,7 @@ export default function Resources() {
         ) : (
           <div id="browse">
             <FeaturedCollections />
+            <Turn2LawTools />
             <LatestNews />
             <ComplianceUpdates />
             <Events />

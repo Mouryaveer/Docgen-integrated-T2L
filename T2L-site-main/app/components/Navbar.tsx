@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 interface NavbarProps {
   ctaText?: string;
@@ -14,9 +15,9 @@ interface NavbarProps {
 
 export default function Navbar({
   ctaText = "Get Started",
-  ctaLink = "#contact",
+  ctaLink = "/signup",
   loginText = "Login",
-  loginLink = "#"
+  loginLink = "/login"
 }: NavbarProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -148,6 +149,7 @@ export default function Navbar({
                 <path d="M7 17 17 7M17 7H7M17 7v10"></path>
               </svg>
             </Link>
+            <ThemeToggle />
             <button
               ref={burgerRef}
               className="burger"
@@ -170,7 +172,7 @@ export default function Navbar({
         aria-label="Mobile"
         onKeyDown={handleMenuKeyDown}
       >
-        <Link href="/" className={pathname === "/" ? "active" : ""} onClick={() => setMenuOpen(false)}>
+        <Link href="/legal-services" className={pathname === "/legal-services" ? "active" : ""} onClick={() => setMenuOpen(false)}>
           Legal Services
         </Link>
         <Link href="/docengine" className={pathname === "/docengine" ? "active" : ""} onClick={() => setMenuOpen(false)}>
@@ -186,6 +188,7 @@ export default function Navbar({
           Resources
         </Link>
         <div className="mm-actions">
+          <ThemeToggle mobile />
           <Link href={loginLink} className="btn btn-ghost" onClick={() => setMenuOpen(false)}>
             {loginText}
           </Link>

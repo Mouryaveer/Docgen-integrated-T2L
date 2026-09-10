@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 export default function DocEngineCTA() {
   return (
@@ -17,10 +18,10 @@ export default function DocEngineCTA() {
             Plain language in, an India-specific drafted document out, with risk flags and e-signature built in.
           </p>
           <div className="btn-row">
-            <a href="/signup.html" className="btn btn-gold">
+            <Link href="/signup" className="btn btn-gold">
               Get started
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#contact"
               className="btn btn-ghost"
               style={{
@@ -30,7 +31,7 @@ export default function DocEngineCTA() {
               }}
             >
               Talk to us
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ export default function Subnav() {
     <>
       <div className="subnav" id="subnav"><div className="subnav-in"><nav className="subnav-track" id="subnavTrack" aria-label="Categories">
   <a href="#featured" className="on"><span className="emo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.6-3.6-6.6 3.6 1.3-7-5-4.8 7-.9z" /></svg></span>Featured</a>
+  <a href="#tools"><span className="emo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19" /></svg></span>Turn2Law Tools</a>
   <a href="#news"><span className="emo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="8" y1="13" x2="16" y2="13" /><line x1="8" y1="17" x2="13" y2="17" /></svg></span>News</a>
   <a href="#compliance"><span className="emo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" /><rect x="9" y="3" width="6" height="4" rx="1" /><path d="M9 14l2 2 4-4" /></svg></span>Compliance</a>
   <a href="#events"><span className="emo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg></span>Events</a>

@@ -119,7 +119,7 @@ export default function LandingPage() {
                     <path d="M5 12h14M13 6l6 6-6 6"></path>
                   </svg>
                 </a>
-                <a href="#" className="btn btn-ghost">
+                <a href="/introspector#introspector-live" className="btn btn-ghost">
                   Try Introspector <span className="pill">24/7 AI</span>
                 </a>
               </div>
@@ -166,17 +166,17 @@ export default function LandingPage() {
             <div className="sec-head">
               <span className="eyebrow reveal in">The platform</span>
               <h2 className="h2 reveal in" style={{ "--d": "80ms" } as React.CSSProperties}>
-                Three products. One legal OS.
+                Four products. One legal OS.
               </h2>
               <p className="lede reveal in" style={{ "--d": "140ms" } as React.CSSProperties}>
-                Everything Turn2Law does lives in one of three products: prepare the case, deliver the legal work, or draft the document. All grounded in Indian law, the IPC, BNS, and 50+ statutes that govern your work.
+                Legal services, document generation, AI research, and a searchable resource hub—one connected platform grounded in Indian law.
               </p>
             </div>
 
             <div className="products">
               <InteractiveCard
                 as="a"
-                href="#"
+                href="/introspector"
                 className="pcard dark reveal in"
                 style={{ "--d": "80ms" } as React.CSSProperties}
               >
@@ -206,7 +206,7 @@ export default function LandingPage() {
 
               <InteractiveCard
                 as="a"
-                href="#"
+                href="/legal-services"
                 className="pcard reveal in"
                 style={{ "--d": "160ms" } as React.CSSProperties}
               >
@@ -237,7 +237,7 @@ export default function LandingPage() {
 
               <InteractiveCard
                 as="a"
-                href="#"
+                href="/docengine"
                 className="pcard reveal in"
                 style={{ "--d": "240ms" } as React.CSSProperties}
               >
@@ -266,6 +266,29 @@ export default function LandingPage() {
                     <path d="M5 12h14M13 6l6 6-6 6"></path>
                   </svg>
                 </span>
+              </InteractiveCard>
+
+              <InteractiveCard
+                as="a"
+                href="/resources"
+                className="pcard reveal in"
+                style={{ "--d": "320ms" } as React.CSSProperties}
+              >
+                <div className="p-num">04 · Resources</div>
+                <div className="p-ico">
+                  <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.7" stroke="currentColor">
+                    <path d="M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z"></path>
+                    <path d="M4 18a2 2 0 0 0 2 2h12M8 7h6M8 11h6"></path>
+                  </svg>
+                </div>
+                <div className="p-name">Resources</div>
+                <p className="p-desc">Legal news, case law, acts, templates, events, learning, and the official Turn2Law tools ecosystem.</p>
+                <div className="p-visual">
+                  <span className="chip"><i></i>Case law</span>
+                  <span className="chip"><i></i>Templates</span>
+                  <span className="chip"><i></i>Events</span>
+                </div>
+                <span className="p-link">Explore resources<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
               </InteractiveCard>
             </div>
           </div>
@@ -315,7 +338,7 @@ export default function LandingPage() {
                     <div className="big">14<s>days</s></div>
                     <div className="note">to MGT-7 annual return · reminded on WhatsApp</div>
                   </div>
-                  <a href="#" className="file-btn">Engage Turn2Law to file</a>
+                <a href="/legal-services#services" className="file-btn">Engage Turn2Law to file</a>
                 </div>
               </InteractiveCard>
 
@@ -380,13 +403,13 @@ export default function LandingPage() {
                   <span className="chip"><i></i>Virtual GC</span>
                 </div>
                 <div className="hero-ctas reveal in" style={{ "--d": "260ms", justifyContent: "flex-start", marginTop: "30px" } as React.CSSProperties}>
-                  <a href="#" className="btn btn-gold">
+                  <a href="/legal-services#services" className="btn btn-gold">
                     See the catalogue
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M13 6l6 6-6 6"></path>
                     </svg>
                   </a>
-                  <a href="#" className="btn btn-ghost">View pricing</a>
+                  <a href="/legal-services#pricing" className="btn btn-ghost">View pricing</a>
                 </div>
               </div>
 
@@ -498,13 +521,13 @@ export default function LandingPage() {
                   <span className="chip"><i></i>Term Sheet</span>
                 </div>
                 <div className="hero-ctas reveal" style={{ "--d": "260ms", justifyContent: "flex-start", marginTop: "30px" } as React.CSSProperties}>
-                  <a href="#" className="btn btn-gold">
+                  <a href="/docengine" className="btn btn-gold">
                     Try Doc Engine
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M13 6l6 6-6 6"></path>
                     </svg>
                   </a>
-                  <a href="#" className="btn btn-ghost">See templates</a>
+                  <a href="/resources#documents" className="btn btn-ghost">See templates</a>
                 </div>
               </div>
             </div>
@@ -539,13 +562,13 @@ export default function LandingPage() {
                   <span className="chip"><i></i>Vault</span>
                 </div>
                 <div className="hero-ctas reveal" style={{ "--d": "260ms", justifyContent: "flex-start", marginTop: "30px" } as React.CSSProperties}>
-                  <a href="#" className="btn btn-gold" style={{ background: "var(--gold)", color: "#111" }}>
+                  <a href="/introspector#introspector-live" className="btn btn-gold" style={{ background: "var(--gold)", color: "#111" }}>
                     Join the pilot
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M13 6l6 6-6 6"></path>
                     </svg>
                   </a>
-                  <a href="#" className="btn btn-ghost" style={{ background: "rgba(255,255,255,.06)", color: "#fff", borderColor: "rgba(255,255,255,.2)" }}>
+                  <a href="/introspector#workflows" className="btn btn-ghost" style={{ background: "rgba(255,255,255,.06)", color: "#fff", borderColor: "rgba(255,255,255,.2)" }}>
                     See capabilities
                   </a>
                 </div>
@@ -646,7 +669,7 @@ export default function LandingPage() {
                     ROC and GST deadlines, never missed
                   </li>
                 </ul>
-                <a href="#" className="btn btn-gold">
+                <a href="/legal-services#services" className="btn btn-gold">
                   Start here
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14M13 6l6 6-6 6"></path>
@@ -689,7 +712,7 @@ export default function LandingPage() {
                     A privileged vault, isolated in India
                   </li>
                 </ul>
-                <a href="#" className="btn btn-gold">
+                <a href="/introspector#introspector-live" className="btn btn-gold">
                   Join the pilot
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14M13 6l6 6-6 6"></path>

@@ -177,7 +177,7 @@ export default function ContactForm() {
           aria-required="true"
         />
         <span>
-          I agree to the <a href="#">Privacy Policy</a> and consent to Turn2Law contacting me about my enquiry.
+          I agree to the <a href="/privacy">Privacy Policy</a> and consent to Turn2Law contacting me about my enquiry.
         </span>
       </label>
       <small 
