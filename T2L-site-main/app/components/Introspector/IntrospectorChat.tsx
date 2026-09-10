@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import MarkdownResponse from "../MarkdownResponse";
 
 /**
  * Introspector live chat client.
@@ -207,12 +208,15 @@ export default function IntrospectorChat() {
               background: m.role === "user" ? GOLD : SURFACE_2,
               color: m.role === "user" ? "#1a1500" : TEXT,
               border: m.role === "user" ? "none" : `1px solid ${BORDER}`,
-              whiteSpace: "pre-wrap",
               lineHeight: 1.55,
               fontSize: 14.5,
             }}
           >
-            {m.content}
+            {m.role === "assistant" ? (
+              <MarkdownResponse content={m.content} />
+            ) : (
+              m.content
+            )}
           </div>
         ))}
 

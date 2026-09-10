@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import MarkdownResponse from "./MarkdownResponse";
 import { sendLegalQuery, checkBackendHealth } from "../services/chatApi";
 import { useKeepAlive } from "../hooks/useKeepAlive";
 
@@ -262,7 +263,11 @@ export default function LegalChatbot() {
                       : "bg-[#0E1C31] border border-white/8 text-gray-200 rounded-bl-sm"
                   }`}
                 >
-                  <p className="whitespace-pre-wrap">{msg.text}</p>
+                  {msg.sender === "assistant" ? (
+                    <MarkdownResponse content={msg.text} />
+                  ) : (
+                    <p className="whitespace-pre-wrap">{msg.text}</p>
+                  )}
                   {msg.modelUsed && (
                     <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/10">
                       <span className="text-[10px] text-gray-500 font-mono">

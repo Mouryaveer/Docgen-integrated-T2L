@@ -1,0 +1,182 @@
+.content {
+  min-width: 0;
+  color: inherit;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+
+.content > :first-child {
+  margin-top: 0;
+}
+
+.content > :last-child {
+  margin-bottom: 0;
+}
+
+.content :global(p) {
+  margin: 0 0 0.9em;
+}
+
+.content :global(h1),
+.content :global(h2),
+.content :global(h3),
+.content :global(h4) {
+  color: inherit;
+  font-family: var(--font-poppins), inherit;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin: 1.35em 0 0.55em;
+}
+
+.content :global(h1),
+.content :global(h2) {
+  font-size: 1.12em;
+}
+
+.content :global(h3) {
+  font-size: 1.04em;
+}
+
+.content :global(h4) {
+  font-size: 0.98em;
+  color: color-mix(in srgb, currentColor 88%, transparent);
+}
+
+.content :global(strong) {
+  color: inherit;
+  font-weight: 700;
+}
+
+.content :global(ul),
+.content :global(ol) {
+  margin: 0.65em 0 1em;
+  padding-left: 1.5em;
+}
+
+.content :global(ul) {
+  list-style: disc;
+}
+
+.content :global(ol) {
+  list-style: decimal;
+}
+
+.content :global(li) {
+  margin: 0.35em 0;
+  padding-left: 0.2em;
+}
+
+.content :global(li > ul),
+.content :global(li > ol) {
+  margin-top: 0.35em;
+  margin-bottom: 0.35em;
+}
+
+.content :global(blockquote) {
+  margin: 1em 0;
+  padding: 0.75em 1em;
+  border-left: 3px solid #c9a227;
+  border-radius: 0 8px 8px 0;
+  background: rgba(201, 162, 39, 0.1);
+  color: color-mix(in srgb, currentColor 88%, transparent);
+}
+
+.content :global(blockquote > :last-child) {
+  margin-bottom: 0;
+}
+
+.content :global(hr) {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  margin: 1.35em 0;
+}
+
+.tableWrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1em 0 1.25em;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.content :global(table) {
+  width: 100%;
+  min-width: 440px;
+  border-collapse: collapse;
+  font-size: 0.92em;
+  text-align: left;
+}
+
+.content :global(th),
+.content :global(td) {
+  padding: 0.72em 0.85em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  vertical-align: top;
+}
+
+.content :global(th) {
+  background: rgba(201, 162, 39, 0.13);
+  color: inherit;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.content :global(tr:last-child td) {
+  border-bottom: 0;
+}
+
+.content :global(code) {
+  padding: 0.14em 0.38em;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f3d990;
+  font-family: var(--font-dm-mono), ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.content :global(pre) {
+  margin: 1em 0;
+  padding: 1em 1.1em;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.32);
+  -webkit-overflow-scrolling: touch;
+}
+
+.content :global(pre code) {
+  display: block;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 0.88em;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+.content :global(a) {
+  color: #e6c36e;
+  text-decoration: underline;
+  text-decoration-color: rgba(230, 195, 110, 0.55);
+  text-underline-offset: 2px;
+}
+
+.content :global(a:hover) {
+  color: #f6dfa4;
+}
+
+.unsafeLink {
+  color: inherit;
+}
+
+@media (max-width: 640px) {
+  .content {
+    line-height: 1.65;
+  }
+
+  .content :global(table) {
+    min-width: 390px;
+  }
+}
